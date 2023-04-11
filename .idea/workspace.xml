@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0484796-7f3a-4dc9-8f60-6407d60d0071" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/src/main/java/Bot/Main.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Bot/TelegramBot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Bot" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,10 +33,30 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Алекс/Git/GameBot",
+    "last_opened_file_path": "C:/Алекс/Git/GameBot/Bot",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="telegrambot.Main" />
+      <module name="GameBot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="telegrambot.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,6 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1681157779415</updated>
       <workItem from="1681157780478" duration="41000" />
+      <workItem from="1681211655637" duration="53000" />
     </task>
     <servers />
   </component>
