@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0484796-7f3a-4dc9-8f60-6407d60d0071" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Bot/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bot/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bot/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bot/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bot/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bot/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Bot/TelegramBot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bot/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bot/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Bot/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Bot/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +28,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Алекс/Git/GameBot/Bot",
     "vue.rearranger.settings.migration": "true"
   }
@@ -67,6 +63,7 @@
       <updated>1681157779415</updated>
       <workItem from="1681157780478" duration="41000" />
       <workItem from="1681211655637" duration="53000" />
+      <workItem from="1681219342856" duration="59000" />
     </task>
     <servers />
   </component>

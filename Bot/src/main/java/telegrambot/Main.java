@@ -7,9 +7,9 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Main {
     public static void main(String[] args) throws TelegramApiException {
+        //Регистрация бота
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-        TelegramBot telegramBot = new TelegramBot();
-        telegramBotsApi.registerBot(telegramBot);
+        telegramBotsApi.registerBot(new TelegramBot());
 
         System.out.println("**** Bot start ****");
     }

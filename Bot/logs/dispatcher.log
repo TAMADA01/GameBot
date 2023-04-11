@@ -1,0 +1,640 @@
+2023-04-11 16:32:45 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:32:45 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 0 of 2; total allocated: 0 of 100]
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 0][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:45 DEBUG MainClientExec:234 - Opening connection {s}->https://api.telegram.org:443
+2023-04-11 16:32:45 DEBUG DefaultHttpClientConnectionOperator:139 - Connecting to api.telegram.org/149.154.167.220:443
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:366 - Connecting socket to api.telegram.org/149.154.167.220:443 with timeout 75000
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:430 - Enabled protocols: [TLSv1.3, TLSv1.2]
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:431 - Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:435 - Starting handshake
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:465 - Secure session established
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:466 -  negotiated protocol: TLSv1.3
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:467 -  negotiated cipher suite: TLS_AES_256_GCM_SHA384
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:475 -  peer principal: CN=api.telegram.org
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:484 -  peer alternative names: [api.telegram.org, www.api.telegram.org]
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:488 -  issuer principal: CN=Go Daddy Secure Certificate Authority - G2, OU=http://certs.godaddy.com/repository/, O="GoDaddy.com, Inc.", L=Scottsdale, ST=Arizona, C=US
+2023-04-11 16:32:45 DEBUG DefaultHttpClientConnectionOperator:146 - Connection established 192.168.0.100:57069<->149.154.167.220:443
+2023-04-11 16:32:45 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 75000
+2023-04-11 16:32:45 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/setMyCommands HTTP/1.1
+2023-04-11 16:32:45 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:32:45 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:32:45 DEBUG headers:133 - http-outgoing-0 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/setMyCommands HTTP/1.1
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> charset: UTF-8
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Content-Length: 134
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Host: api.telegram.org
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/setMyCommands HTTP/1.1[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Content-Length: 134[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:87 - http-outgoing-0 >> "{"commands":[{"command":"/start","description":"Start work!"},{"command":"/help","description":"Help menu"}],"method":"setMyCommands"}"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Date: Tue, 11 Apr 2023 13:32:45 GMT[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Content-Length: 25[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:87 - http-outgoing-0 << "{"ok":true,"result":true}"
+2023-04-11 16:32:45 DEBUG headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Server: nginx/1.18.0
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Date: Tue, 11 Apr 2023 13:32:45 GMT
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Content-Type: application/json
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Content-Length: 25
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Connection: keep-alive
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Origin: *
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:32:45 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 0][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:32:45 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 0][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:45 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:32:45 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 0][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:45 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:32:45 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 75000
+2023-04-11 16:32:45 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/deleteWebhook HTTP/1.1
+2023-04-11 16:32:45 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:32:45 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:32:45 DEBUG headers:133 - http-outgoing-0 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/deleteWebhook HTTP/1.1
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> charset: UTF-8
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Content-Length: 26
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Host: api.telegram.org
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/deleteWebhook HTTP/1.1[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Content-Length: 26[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 >> "[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:87 - http-outgoing-0 >> "{"method":"deleteWebhook"}"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Date: Tue, 11 Apr 2023 13:32:45 GMT[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Content-Length: 68[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-0 << "[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:87 - http-outgoing-0 << "{"ok":true,"result":true,"description":"Webhook is already deleted"}"
+2023-04-11 16:32:45 DEBUG headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Server: nginx/1.18.0
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Date: Tue, 11 Apr 2023 13:32:45 GMT
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Content-Type: application/json
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Content-Length: 68
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Connection: keep-alive
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Origin: *
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:32:45 DEBUG headers:125 - http-outgoing-0 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:32:45 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 0][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:32:45 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 0][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:45 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:32:45 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 0 of 2; total allocated: 0 of 100]
+2023-04-11 16:32:45 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 1][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:45 DEBUG MainClientExec:234 - Opening connection {s}->https://api.telegram.org:443
+2023-04-11 16:32:45 DEBUG DefaultHttpClientConnectionOperator:139 - Connecting to api.telegram.org/149.154.167.220:443
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:366 - Connecting socket to api.telegram.org/149.154.167.220:443 with timeout 75000
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:430 - Enabled protocols: [TLSv1.3, TLSv1.2]
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:431 - Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:435 - Starting handshake
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:465 - Secure session established
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:466 -  negotiated protocol: TLSv1.3
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:467 -  negotiated cipher suite: TLS_AES_256_GCM_SHA384
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:475 -  peer principal: CN=api.telegram.org
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:484 -  peer alternative names: [api.telegram.org, www.api.telegram.org]
+2023-04-11 16:32:45 DEBUG SSLConnectionSocketFactory:488 -  issuer principal: CN=Go Daddy Secure Certificate Authority - G2, OU=http://certs.godaddy.com/repository/, O="GoDaddy.com, Inc.", L=Scottsdale, ST=Arizona, C=US
+2023-04-11 16:32:45 DEBUG DefaultHttpClientConnectionOperator:146 - Connection established 192.168.0.100:57070<->149.154.167.220:443
+2023-04-11 16:32:45 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 75000
+2023-04-11 16:32:45 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:32:45 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:32:45 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:32:45 DEBUG headers:133 - http-outgoing-1 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-1 >> charset: UTF-8
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-1 >> Content-Length: 80
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-1 >> Host: api.telegram.org
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-1 >> Connection: Keep-Alive
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:32:45 DEBUG headers:136 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "Content-Length: 80[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:73 - http-outgoing-1 >> "[\r][\n]"
+2023-04-11 16:32:45 DEBUG wire:87 - http-outgoing-1 >> "{"offset":1,"limit":100,"timeout":50,"allowed_updates":[],"method":"getupdates"}"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Date: Tue, 11 Apr 2023 13:32:58 GMT[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Content-Length: 468[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 << "{"ok":true,"result":[{"update_id":399951767,[\n]"
+2023-04-11 16:32:58 DEBUG wire:87 - http-outgoing-1 << ""message":{"message_id":41,"from":{"id":1124845673,"is_bot":false,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","language_code":"ru"},"chat":{"id":1124845673,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","type":"private"},"date":1681219978,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}]}"
+2023-04-11 16:32:58 DEBUG headers:122 - http-outgoing-1 << HTTP/1.1 200 OK
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Server: nginx/1.18.0
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Date: Tue, 11 Apr 2023 13:32:58 GMT
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Content-Type: application/json
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Content-Length: 468
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Connection: keep-alive
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Origin: *
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:32:58 DEBUG headers:125 - http-outgoing-1 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:32:58 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:32:58 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 1][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:32:58 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:32:58 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 1][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:58 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:32:58 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:32:58 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:58 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 1][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:58 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:32:58 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 75000
+2023-04-11 16:32:58 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:32:58 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:32:58 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:32:58 DEBUG headers:133 - http-outgoing-1 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-1 >> charset: UTF-8
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-1 >> Content-Length: 88
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-1 >> Host: api.telegram.org
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-1 >> Connection: Keep-Alive
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "Content-Length: 88[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-1 >> "[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:87 - http-outgoing-1 >> "{"offset":399951768,"limit":100,"timeout":50,"allowed_updates":[],"method":"getupdates"}"
+2023-04-11 16:32:58 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:32:58 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:32:58 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:58 DEBUG wire:87 - http-outgoing-0 << "[read] I/O error: Read timed out"
+2023-04-11 16:32:58 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 0][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:32:58 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:32:58 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 75000
+2023-04-11 16:32:58 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/sendmessage HTTP/1.1
+2023-04-11 16:32:58 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:32:58 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:32:58 DEBUG headers:133 - http-outgoing-0 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/sendmessage HTTP/1.1
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-0 >> charset: UTF-8
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-0 >> Content-Length: 74
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-0 >> Host: api.telegram.org
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:32:58 DEBUG headers:136 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/sendmessage HTTP/1.1[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "Content-Length: 74[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:73 - http-outgoing-0 >> "[\r][\n]"
+2023-04-11 16:32:58 DEBUG wire:87 - http-outgoing-0 >> "{"chat_id":"1124845673","text":"Start work. Good!","method":"sendmessage"}"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Date: Tue, 11 Apr 2023 13:32:59 GMT[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Content-Length: 309[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:73 - http-outgoing-0 << "[\r][\n]"
+2023-04-11 16:32:59 DEBUG wire:87 - http-outgoing-0 << "{"ok":true,"result":{"message_id":42,"from":{"id":6048540644,"is_bot":true,"first_name":"AXEL","username":"AXELTeam_bot"},"chat":{"id":1124845673,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","type":"private"},"date":1681219979,"text":"Start work. Good!"}}"
+2023-04-11 16:32:59 DEBUG headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Server: nginx/1.18.0
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Date: Tue, 11 Apr 2023 13:32:59 GMT
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Content-Type: application/json
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Content-Length: 309
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Connection: keep-alive
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Origin: *
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:32:59 DEBUG headers:125 - http-outgoing-0 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:32:59 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:32:59 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 0][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:32:59 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:32:59 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 0][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Date: Tue, 11 Apr 2023 13:33:06 GMT[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Content-Length: 468[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 << "{"ok":true,"result":[{"update_id":399951768,[\n]"
+2023-04-11 16:33:06 DEBUG wire:87 - http-outgoing-1 << ""message":{"message_id":43,"from":{"id":1124845673,"is_bot":false,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","language_code":"ru"},"chat":{"id":1124845673,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","type":"private"},"date":1681219986,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}]}"
+2023-04-11 16:33:06 DEBUG headers:122 - http-outgoing-1 << HTTP/1.1 200 OK
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Server: nginx/1.18.0
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Date: Tue, 11 Apr 2023 13:33:06 GMT
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Content-Type: application/json
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Content-Length: 468
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Connection: keep-alive
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Origin: *
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-1 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:33:06 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 1][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:33:06 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 1][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:06 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:33:06 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:33:06 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:06 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 1][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:06 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:33:06 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 75000
+2023-04-11 16:33:06 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:33:06 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:33:06 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:33:06 DEBUG headers:133 - http-outgoing-1 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-1 >> charset: UTF-8
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-1 >> Content-Length: 88
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-1 >> Host: api.telegram.org
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-1 >> Connection: Keep-Alive
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:33:06 DEBUG wire:87 - http-outgoing-0 << "[read] I/O error: Read timed out"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1[\r][\n]"
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 0][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:33:06 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:33:06 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 75000
+2023-04-11 16:33:06 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/sendmessage HTTP/1.1
+2023-04-11 16:33:06 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:33:06 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "Content-Length: 88[\r][\n]"
+2023-04-11 16:33:06 DEBUG headers:133 - http-outgoing-0 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/sendmessage HTTP/1.1
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-0 >> charset: UTF-8
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-0 >> Content-Length: 74
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-0 >> Host: api.telegram.org
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-1 >> "[\r][\n]"
+2023-04-11 16:33:06 DEBUG headers:136 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:33:06 DEBUG wire:87 - http-outgoing-1 >> "{"offset":399951769,"limit":100,"timeout":50,"allowed_updates":[],"method":"getupdates"}"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/sendmessage HTTP/1.1[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "Content-Length: 74[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 >> "[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:87 - http-outgoing-0 >> "{"chat_id":"1124845673","text":"Start work. Good!","method":"sendmessage"}"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Date: Tue, 11 Apr 2023 13:33:07 GMT[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Content-Length: 309[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:73 - http-outgoing-0 << "[\r][\n]"
+2023-04-11 16:33:06 DEBUG wire:87 - http-outgoing-0 << "{"ok":true,"result":{"message_id":44,"from":{"id":6048540644,"is_bot":true,"first_name":"AXEL","username":"AXELTeam_bot"},"chat":{"id":1124845673,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","type":"private"},"date":1681219987,"text":"Start work. Good!"}}"
+2023-04-11 16:33:06 DEBUG headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Server: nginx/1.18.0
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Date: Tue, 11 Apr 2023 13:33:07 GMT
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Content-Type: application/json
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Content-Length: 309
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Connection: keep-alive
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Origin: *
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:33:06 DEBUG headers:125 - http-outgoing-0 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:33:06 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 0][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:33:06 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:33:06 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 0][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Date: Tue, 11 Apr 2023 13:33:20 GMT[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Content-Length: 440[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 << "{"ok":true,"result":[{"update_id":399951769,[\n]"
+2023-04-11 16:33:20 DEBUG wire:87 - http-outgoing-1 << ""message":{"message_id":45,"from":{"id":1124845673,"is_bot":false,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","language_code":"ru"},"chat":{"id":1124845673,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","type":"private"},"date":1681220000,"text":"\u041e\u0430\u043e\u0430\u043b\u0432"}}]}"
+2023-04-11 16:33:20 DEBUG headers:122 - http-outgoing-1 << HTTP/1.1 200 OK
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Server: nginx/1.18.0
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Date: Tue, 11 Apr 2023 13:33:20 GMT
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Content-Type: application/json
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Content-Length: 440
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Connection: keep-alive
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Origin: *
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:33:20 DEBUG headers:125 - http-outgoing-1 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:33:20 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:33:20 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 1][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:33:20 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:33:20 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 1][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:20 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:33:20 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:33:20 ERROR TelegramBot:62 - Unexpected command: Оаоалв
+2023-04-11 16:33:20 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:20 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 1][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:33:20 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:33:20 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 75000
+2023-04-11 16:33:20 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:33:20 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:33:20 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:33:20 DEBUG headers:133 - http-outgoing-1 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:33:20 DEBUG headers:136 - http-outgoing-1 >> charset: UTF-8
+2023-04-11 16:33:20 DEBUG headers:136 - http-outgoing-1 >> Content-Length: 88
+2023-04-11 16:33:20 DEBUG headers:136 - http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:33:20 DEBUG headers:136 - http-outgoing-1 >> Host: api.telegram.org
+2023-04-11 16:33:20 DEBUG headers:136 - http-outgoing-1 >> Connection: Keep-Alive
+2023-04-11 16:33:20 DEBUG headers:136 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:33:20 DEBUG headers:136 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "Content-Length: 88[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:73 - http-outgoing-1 >> "[\r][\n]"
+2023-04-11 16:33:20 DEBUG wire:87 - http-outgoing-1 >> "{"offset":399951770,"limit":100,"timeout":50,"allowed_updates":[],"method":"getupdates"}"
+2023-04-11 16:34:31 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:34:31 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:34:31 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 0 of 2; total allocated: 0 of 100]
+2023-04-11 16:34:31 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 0][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:31 DEBUG MainClientExec:234 - Opening connection {s}->https://api.telegram.org:443
+2023-04-11 16:34:31 DEBUG DefaultHttpClientConnectionOperator:139 - Connecting to api.telegram.org/149.154.167.220:443
+2023-04-11 16:34:31 DEBUG SSLConnectionSocketFactory:366 - Connecting socket to api.telegram.org/149.154.167.220:443 with timeout 75000
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:430 - Enabled protocols: [TLSv1.3, TLSv1.2]
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:431 - Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:435 - Starting handshake
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:465 - Secure session established
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:466 -  negotiated protocol: TLSv1.3
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:467 -  negotiated cipher suite: TLS_AES_256_GCM_SHA384
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:475 -  peer principal: CN=api.telegram.org
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:484 -  peer alternative names: [api.telegram.org, www.api.telegram.org]
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:488 -  issuer principal: CN=Go Daddy Secure Certificate Authority - G2, OU=http://certs.godaddy.com/repository/, O="GoDaddy.com, Inc.", L=Scottsdale, ST=Arizona, C=US
+2023-04-11 16:34:32 DEBUG DefaultHttpClientConnectionOperator:146 - Connection established 192.168.0.100:57090<->149.154.167.220:443
+2023-04-11 16:34:32 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 75000
+2023-04-11 16:34:32 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/setMyCommands HTTP/1.1
+2023-04-11 16:34:32 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:34:32 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:34:32 DEBUG headers:133 - http-outgoing-0 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/setMyCommands HTTP/1.1
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> charset: UTF-8
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Content-Length: 134
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Host: api.telegram.org
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/setMyCommands HTTP/1.1[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Content-Length: 134[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:87 - http-outgoing-0 >> "{"commands":[{"command":"/start","description":"Start work!"},{"command":"/help","description":"Help menu"}],"method":"setMyCommands"}"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Date: Tue, 11 Apr 2023 13:34:32 GMT[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Content-Length: 25[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:87 - http-outgoing-0 << "{"ok":true,"result":true}"
+2023-04-11 16:34:32 DEBUG headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Server: nginx/1.18.0
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Date: Tue, 11 Apr 2023 13:34:32 GMT
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Content-Type: application/json
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Content-Length: 25
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Connection: keep-alive
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Origin: *
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:34:32 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 0][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:34:32 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 0][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:32 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:34:32 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 0][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:32 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:34:32 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 75000
+2023-04-11 16:34:32 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/deleteWebhook HTTP/1.1
+2023-04-11 16:34:32 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:34:32 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:34:32 DEBUG headers:133 - http-outgoing-0 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/deleteWebhook HTTP/1.1
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> charset: UTF-8
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Content-Length: 26
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Host: api.telegram.org
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/deleteWebhook HTTP/1.1[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Content-Length: 26[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 >> "[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:87 - http-outgoing-0 >> "{"method":"deleteWebhook"}"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Date: Tue, 11 Apr 2023 13:34:32 GMT[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Content-Length: 68[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-0 << "[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:87 - http-outgoing-0 << "{"ok":true,"result":true,"description":"Webhook is already deleted"}"
+2023-04-11 16:34:32 DEBUG headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Server: nginx/1.18.0
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Date: Tue, 11 Apr 2023 13:34:32 GMT
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Content-Type: application/json
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Content-Length: 68
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Connection: keep-alive
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Origin: *
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:34:32 DEBUG headers:125 - http-outgoing-0 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:34:32 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 0][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:34:32 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-0: set socket timeout to 0
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 0][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:32 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:34:32 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 0 of 2; total allocated: 0 of 100]
+2023-04-11 16:34:32 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 1][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:32 DEBUG MainClientExec:234 - Opening connection {s}->https://api.telegram.org:443
+2023-04-11 16:34:32 DEBUG DefaultHttpClientConnectionOperator:139 - Connecting to api.telegram.org/149.154.167.220:443
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:366 - Connecting socket to api.telegram.org/149.154.167.220:443 with timeout 75000
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:430 - Enabled protocols: [TLSv1.3, TLSv1.2]
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:431 - Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:435 - Starting handshake
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:465 - Secure session established
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:466 -  negotiated protocol: TLSv1.3
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:467 -  negotiated cipher suite: TLS_AES_256_GCM_SHA384
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:475 -  peer principal: CN=api.telegram.org
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:484 -  peer alternative names: [api.telegram.org, www.api.telegram.org]
+2023-04-11 16:34:32 DEBUG SSLConnectionSocketFactory:488 -  issuer principal: CN=Go Daddy Secure Certificate Authority - G2, OU=http://certs.godaddy.com/repository/, O="GoDaddy.com, Inc.", L=Scottsdale, ST=Arizona, C=US
+2023-04-11 16:34:32 DEBUG DefaultHttpClientConnectionOperator:146 - Connection established 192.168.0.100:57091<->149.154.167.220:443
+2023-04-11 16:34:32 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 75000
+2023-04-11 16:34:32 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:34:32 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:34:32 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:34:32 DEBUG headers:133 - http-outgoing-1 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-1 >> charset: UTF-8
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-1 >> Content-Length: 80
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-1 >> Host: api.telegram.org
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-1 >> Connection: Keep-Alive
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:34:32 DEBUG headers:136 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "Content-Length: 80[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:73 - http-outgoing-1 >> "[\r][\n]"
+2023-04-11 16:34:32 DEBUG wire:87 - http-outgoing-1 >> "{"offset":1,"limit":100,"timeout":50,"allowed_updates":[],"method":"getupdates"}"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "HTTP/1.1 200 OK[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Server: nginx/1.18.0[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Date: Tue, 11 Apr 2023 13:34:35 GMT[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Content-Type: application/json[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Content-Length: 440[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Connection: keep-alive[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Origin: *[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Allow-Methods: GET, POST, OPTIONS[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "[\r][\n]"
+2023-04-11 16:34:34 DEBUG wire:73 - http-outgoing-1 << "{"ok":true,"result":[{"update_id":399951770,[\n]"
+2023-04-11 16:34:34 DEBUG wire:87 - http-outgoing-1 << ""message":{"message_id":46,"from":{"id":1124845673,"is_bot":false,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","language_code":"ru"},"chat":{"id":1124845673,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0435\u0439","last_name":"Alex","username":"TAMADA0R","type":"private"},"date":1681220075,"text":"\u041f\u043f\u0438\u0440\u0440\u043f"}}]}"
+2023-04-11 16:34:34 DEBUG headers:122 - http-outgoing-1 << HTTP/1.1 200 OK
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Server: nginx/1.18.0
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Date: Tue, 11 Apr 2023 13:34:35 GMT
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Content-Type: application/json
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Content-Length: 440
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Connection: keep-alive
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Origin: *
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Access-Control-Allow-Methods: GET, POST, OPTIONS
+2023-04-11 16:34:34 DEBUG headers:125 - http-outgoing-1 << Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+2023-04-11 16:34:34 DEBUG MainClientExec:285 - Connection can be kept alive indefinitely
+2023-04-11 16:34:34 DEBUG PoolingHttpClientConnectionManager:344 - Connection [id: 1][route: {s}->https://api.telegram.org:443] can be kept alive indefinitely
+2023-04-11 16:34:34 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:34:34 DEBUG PoolingHttpClientConnectionManager:351 - Connection released: [id: 1][route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:35 DEBUG RequestAddCookies:123 - CookieSpec selected: default
+2023-04-11 16:34:35 DEBUG RequestAuthCache:77 - Auth cache not set in the context
+2023-04-11 16:34:35 DEBUG TelegramBot:62 - Unexpected command: Ппиррп
+2023-04-11 16:34:35 DEBUG PoolingHttpClientConnectionManager:267 - Connection request: [route: {s}->https://api.telegram.org:443][total available: 1; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:35 DEBUG PoolingHttpClientConnectionManager:312 - Connection leased: [id: 1][route: {s}->https://api.telegram.org:443][total available: 0; route allocated: 1 of 2; total allocated: 1 of 100]
+2023-04-11 16:34:35 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 0
+2023-04-11 16:34:35 DEBUG DefaultManagedHttpClientConnection:88 - http-outgoing-1: set socket timeout to 75000
+2023-04-11 16:34:35 DEBUG MainClientExec:255 - Executing request POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:34:35 DEBUG MainClientExec:260 - Target auth state: UNCHALLENGED
+2023-04-11 16:34:35 DEBUG MainClientExec:266 - Proxy auth state: UNCHALLENGED
+2023-04-11 16:34:35 DEBUG headers:133 - http-outgoing-1 >> POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1
+2023-04-11 16:34:35 DEBUG headers:136 - http-outgoing-1 >> charset: UTF-8
+2023-04-11 16:34:35 DEBUG headers:136 - http-outgoing-1 >> Content-Length: 88
+2023-04-11 16:34:35 DEBUG headers:136 - http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
+2023-04-11 16:34:35 DEBUG headers:136 - http-outgoing-1 >> Host: api.telegram.org
+2023-04-11 16:34:35 DEBUG headers:136 - http-outgoing-1 >> Connection: Keep-Alive
+2023-04-11 16:34:35 DEBUG headers:136 - http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.13 (Java/20)
+2023-04-11 16:34:35 DEBUG headers:136 - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "POST /bot6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E/getupdates HTTP/1.1[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "charset: UTF-8[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "Content-Length: 88[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "Host: api.telegram.org[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.13 (Java/20)[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:73 - http-outgoing-1 >> "[\r][\n]"
+2023-04-11 16:34:35 DEBUG wire:87 - http-outgoing-1 >> "{"offset":399951771,"limit":100,"timeout":50,"allowed_updates":[],"method":"getupdates"}"
