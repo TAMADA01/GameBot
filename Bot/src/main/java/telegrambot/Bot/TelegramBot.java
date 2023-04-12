@@ -3,15 +3,13 @@ package telegrambot.Bot;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Chat;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -53,83 +51,90 @@ public class TelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 
         //Проверка на текстовое сообщение
-        if (update.hasMessage() && update.getMessage().hasText()){
-
-            Chat chat = update.getMessage().getChat();
-            String messageText = update.getMessage().getText();
-
-            //Список команд
-            switch (messageText) {
-                case "/start" -> startCommand(chat);
-                case "/help" -> helpCommand(chat);
-                case "/show" -> showCommand(chat);
-                default -> System.out.println("Unexpected command: " + messageText);
-            }
+        if (update.hasMessage()){
+            handlerMessage(update.getMessage());
         }
         //Проверка на сообщение от InlineButton
         else if (update.hasCallbackQuery()){
-            SendMessage sendMessage = new SendMessage();
-            sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId());
-            sendMessage.setText("Callback = " + update.getCallbackQuery().getData());
-
             try {
-                execute(sendMessage);
+                execute(SendMessage.builder()
+                        .chatId(update.getCallbackQuery().getMessage().getChatId())
+                        .text("Callback = " + update.getCallbackQuery().getData())
+                        .build());
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
             }
         }
     }
 
-    //Команда /start
-    private void startCommand(Chat chat){
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(chat.getId());
-        sendMessage.setText("Start work. Good!");
+    private void handlerMessage(Message message) {
+        if (message.hasText()) {
+
+            //Список команд
+            switch (message.getText()) {
+                case "/start", "/help" -> helpCommand(message);
+                case "/my_pet" -> myPetCommand(message);
+                case "/pet_info" -> petInfoCommand(message);
+                default -> System.out.println("Unexpected command: " + message.getText());
+            }
+        }
+    }
+
+    private void petInfoCommand(Message message) {
         try {
-            execute(sendMessage);
+            execute(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("PetInfo")
+                    .build());
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    //Команда /start
+    private void startCommand(Message message){
+        try {
+            execute(SendMessage.builder()
+                    .chatId(message.getChat().getId())
+                    .text("Start work. Good!\n" + message.getChat().getId() + "\n" + message.getFrom().getId())
+                    .build());
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
     }
 
     //Команда /help
-    private void helpCommand(Chat chat){
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(chat.getId());
-        sendMessage.setText("I help you! But later)");
+    private void helpCommand(Message message){
         try {
-            execute(sendMessage);
+            execute(SendMessage.builder()
+                    .chatId(message.getChat().getId())
+                    .text("I help you! But later)")
+                    .build());
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
     }
 
     //Команда /show
-    private void showCommand(Chat chat){
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(chat.getId());
-        sendMessage.setText("Show stats!!!");
-
+    private void myPetCommand(Message message){
         //Добавление Inline клавиатуры
-        InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rowsButton = new ArrayList<>();
-        List<InlineKeyboardButton> rowButton = new ArrayList<>();
 
-        InlineKeyboardButton button1 = new InlineKeyboardButton("Test1");
-        InlineKeyboardButton button2 = new InlineKeyboardButton("Test2");
+        List<InlineKeyboardButton> rowButton = Arrays.asList(
+                InlineKeyboardButton.builder().text("Test1").callbackData("test1_data").build(),
+                InlineKeyboardButton.builder().text("Test2").callbackData("test2_data").build()
+        );
 
-        button1.setCallbackData("test1_data");
-        button2.setCallbackData("test2_data");
+        List<List<InlineKeyboardButton>> rowsButton = List.of(
+                rowButton
+        );
 
-        rowButton.add(button1);
-        rowButton.add(button2);
-
-        rowsButton.add(rowButton);
-
-        markupInline.setKeyboard(rowsButton);
-        sendMessage.setReplyMarkup(markupInline);
         try {
-            execute(sendMessage);
+            execute(SendMessage.builder()
+                    .chatId(message.getChat().getId())
+                    .text("Show stats!!!")
+                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                    .build());
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
