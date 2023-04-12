@@ -33,9 +33,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     private void setMyCommands(){
         //Назначить команды боту. Имя и описание
         List<BotCommand> botCommands = Arrays.asList(
-                new BotCommand("/start", "Start work!"),
-                new BotCommand("/help", "Help menu"),
-                new BotCommand("/show", "Show info")
+                new BotCommand("/help", "Помощь"),
+                new BotCommand("/pet_info", "Информация о питомце"),
+                new BotCommand("/my_pet", "Мой питомец")
         );
 
         SetMyCommands smc = new SetMyCommands();
@@ -80,6 +80,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    //Показать информацию о питомце
     private void petInfoCommand(Message message) {
         try {
             execute(SendMessage.builder()
@@ -109,34 +110,45 @@ public class TelegramBot extends TelegramLongPollingBot {
         try {
             execute(SendMessage.builder()
                     .chatId(message.getChat().getId())
-                    .text("I help you! But later)")
+                    .text("Список команд и всё такое")
                     .build());
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
     }
 
-    //Команда /show
+    //Показать питомца
     private void myPetCommand(Message message){
-        //Добавление Inline клавиатуры
+        if (message.getChat().isGroupChat()) {
+            //Добавление Inline клавиатур
+            List<InlineKeyboardButton> rowButton = Arrays.asList(
+                    InlineKeyboardButton.builder().text("Test1").callbackData("test1_data").build(),
+                    InlineKeyboardButton.builder().text("Test2").callbackData("test2_data").build()
+            );
 
-        List<InlineKeyboardButton> rowButton = Arrays.asList(
-                InlineKeyboardButton.builder().text("Test1").callbackData("test1_data").build(),
-                InlineKeyboardButton.builder().text("Test2").callbackData("test2_data").build()
-        );
+            List<List<InlineKeyboardButton>> rowsButton = List.of(
+                    rowButton
+            );
 
-        List<List<InlineKeyboardButton>> rowsButton = List.of(
-                rowButton
-        );
-
-        try {
-            execute(SendMessage.builder()
-                    .chatId(message.getChat().getId())
-                    .text("Show stats!!!")
-                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
-                    .build());
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+            try {
+                execute(SendMessage.builder()
+                        .chatId(message.getChat().getId())
+                        .text("Show stats!!!")
+                        .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                        .build());
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            try {
+                execute(SendMessage.builder()
+                        .chatId(message.getFrom().getId())
+                        .text("Данная команда возможна только в групповом чате")
+                        .build());
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
