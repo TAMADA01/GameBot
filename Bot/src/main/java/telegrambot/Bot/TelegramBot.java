@@ -19,8 +19,8 @@ public class TelegramBot extends TelegramLongPollingBot {
     @lombok.Getter
     final String botToken = "6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E";
 
-    public TelegramBot(){
-        super();
+    public TelegramBot(String botToken){
+        super(botToken);
 
         setMyCommands();
     }
@@ -82,26 +82,25 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     //Показать информацию о питомце
     private void petInfoCommand(Message message) {
-        try {
-            execute(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text("PetInfo")
-                    .build());
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+        if (message.getChat().isGroupChat()) {
+            try {
+                execute(SendMessage.builder()
+                        .chatId(message.getChatId())
+                        .text("PetInfo")
+                        .build());
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
-
-
-    //Команда /start
-    private void startCommand(Message message){
-        try {
-            execute(SendMessage.builder()
-                    .chatId(message.getChat().getId())
-                    .text("Start work. Good!\n" + message.getChat().getId() + "\n" + message.getFrom().getId())
-                    .build());
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+        else {
+            try {
+                execute(SendMessage.builder()
+                        .chatId(message.getFrom().getId())
+                        .text("Данная команда возможна только в групповом чате")
+                        .build());
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
