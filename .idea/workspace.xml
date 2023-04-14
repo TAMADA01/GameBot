@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0484796-7f3a-4dc9-8f60-6407d60d0071" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Bot/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Bot/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Bot/TelegramBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bot/src/main/java/telegrambot/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="6a0f69b4-cfc3-48d4-b7fb-1a681d8415a8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Bot" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2OFYQGVc4pgl3Wl3D93PRX9YLpE" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2OQ0uJDtzaDAu3FQifpyjMNOahe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,21 +40,33 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Алекс/Git/GameBot/Bot",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Алекс/Git/JavaBot/GameBot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "40686d2780fee2574ecbe38f047eb606",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="telegrambot.Main" />
+      <option name="MAIN_CLASS_NAME" value="org.GameBot.GameBot.Main" />
       <module name="GameBot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="telegrambot.*" />
+          <option name="PATTERN" value="org.GameBot.GameBot.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="GameBot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.GameBot.GameBot.Main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -56,14 +80,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a0484796-7f3a-4dc9-8f60-6407d60d0071" name="Changes" comment="" />
-      <created>1681157779415</created>
+      <changelist id="6a0f69b4-cfc3-48d4-b7fb-1a681d8415a8" name="Changes" comment="" />
+      <created>1681477720173</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1681157779415</updated>
-      <workItem from="1681157780478" duration="41000" />
-      <workItem from="1681211655637" duration="53000" />
-      <workItem from="1681219342856" duration="59000" />
+      <updated>1681477720173</updated>
+      <workItem from="1681477721249" duration="3161000" />
+      <workItem from="1681480929317" duration="1895000" />
     </task>
     <servers />
   </component>

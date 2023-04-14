@@ -1,5 +1,6 @@
-package telegrambot.Bot;
+package org.GameBot.GameBot.Bot;
 
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -13,21 +14,23 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class TelegramBot extends TelegramLongPollingBot {
+    BotConfig config;
 
-    final String botName = "AXEL";
-    @lombok.Getter
-    final String botToken = "6048540644:AAENevqDQr90auJC2lTslo94oWE6JyjWP4E";
-
-    public TelegramBot(String botToken){
-        super(botToken);
-
+    public TelegramBot(BotConfig config){
+        this.config = config;
         setMyCommands();
     }
 
     @Override
     public String getBotUsername() {
-        return botName;
+        return config.getName();
+    }
+
+    @Override
+    public String getBotToken() {
+        return config.getToken();
     }
 
     private void setMyCommands(){
@@ -42,7 +45,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         smc.setCommands(botCommands);
         //Выполнить загрузку команд
         try {
-            this.execute(smc);
+            executeAsync(smc);
         } catch (TelegramApiException e) {
             throw new RuntimeException(e);
         }
@@ -57,7 +60,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         //Проверка на сообщение от InlineButton
         else if (update.hasCallbackQuery()){
             try {
-                execute(SendMessage.builder()
+                executeAsync(SendMessage.builder()
                         .chatId(update.getCallbackQuery().getMessage().getChatId())
                         .text("Callback = " + update.getCallbackQuery().getData())
                         .build());
@@ -84,7 +87,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private void petInfoCommand(Message message) {
         if (message.getChat().isGroupChat()) {
             try {
-                execute(SendMessage.builder()
+                executeAsync(SendMessage.builder()
                         .chatId(message.getChatId())
                         .text("PetInfo")
                         .build());
@@ -94,7 +97,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
         else {
             try {
-                execute(SendMessage.builder()
+                executeAsync(SendMessage.builder()
                         .chatId(message.getFrom().getId())
                         .text("Данная команда возможна только в групповом чате")
                         .build());
@@ -107,7 +110,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     //Команда /help
     private void helpCommand(Message message){
         try {
-            execute(SendMessage.builder()
+            executeAsync(SendMessage.builder()
                     .chatId(message.getChat().getId())
                     .text("Список команд и всё такое")
                     .build());
@@ -130,7 +133,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             );
 
             try {
-                execute(SendMessage.builder()
+                executeAsync(SendMessage.builder()
                         .chatId(message.getChat().getId())
                         .text("Show stats!!!")
                         .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
@@ -141,7 +144,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
         else {
             try {
-                execute(SendMessage.builder()
+                executeAsync(SendMessage.builder()
                         .chatId(message.getFrom().getId())
                         .text("Данная команда возможна только в групповом чате")
                         .build());
