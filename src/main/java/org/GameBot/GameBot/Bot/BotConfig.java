@@ -13,7 +13,15 @@ import org.springframework.stereotype.Component;
 public class BotConfig {
     @Value("${bot.name}")
     String name;
-
     @Value("${bot.token}")
     String token;
+
+    @Value("${db.host}")
+    private String _host;
+    @Value("${db.password}")
+    private String _password;
+    @Value("${db.name}")
+    private String _name;
+    @Value("${db.user}")
+    private String _user;
 }

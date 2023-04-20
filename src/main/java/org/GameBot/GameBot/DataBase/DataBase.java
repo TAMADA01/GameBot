@@ -1,26 +1,29 @@
 package org.GameBot.GameBot.DataBase;
 
-import lombok.Data;
+import org.GameBot.GameBot.Bot.BotConfig;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
 @Component
-@Configuration
-@Data
-@PropertySource("application.properties")
 public class DataBase {
-    @Value("${db.host}")
+
     private String _host;
-    @Value("${db.password}")
     private String _password;
-    @Value("${db.name}")
     private String _name;
-    @Value("${db.user}")
     private String _user;
+    BotConfig botConfig;
+    public ResultSet result;
+
+    public DataBase(BotConfig config){
+        botConfig = config;
+
+        _host = botConfig.get_host();
+        _password = botConfig.get_password();
+        _name = botConfig.get_name();
+        _user = botConfig.get_user();
+    }
 
     /*public DataBase(String host, String password, String name, String user){
         _host = host;
@@ -29,12 +32,12 @@ public class DataBase {
         _user = user;
     }*/
 
-    public ResultSet query() throws SQLException {
+    public void query() throws SQLException {
         Connection connection = DriverManager.getConnection(_host);
         Statement statement = connection.createStatement();
-        var result = statement.executeQuery("SELECT * FROM pets");
-        connection.close();
-        return result;
+        result = statement.executeQuery("SELECT * FROM users");
+        //connection.close();
+        //return result;
         /*Mysql connnect = mysql_connect(host, user, password, name);
         String result = mysqli_query(connnect, "SELECT * ");
         mysqli_close(connect)
