@@ -17,12 +17,19 @@
 		<java.version>20</java.version>
 		<telegram.version>6.5.0</telegram.version>
 	</properties>
+
 	<dependencies>
 
 		<dependency>
 			<groupId>org.telegram</groupId>
 			<artifactId>telegrambots</artifactId>
 			<version>${telegram.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.41.2.1</version>
 		</dependency>
 
 		<dependency>
