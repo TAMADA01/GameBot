@@ -1,7 +1,6 @@
 package org.GameBot.GameBot.DataBase;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DataBase {
     private String _host;
@@ -15,12 +14,16 @@ public class DataBase {
         _user = user;
     }
 
-    public void query() throws SQLException {
-
-        DriverManager.getConnection(_host, _user, _password);
+    public ResultSet query() throws SQLException {
+        Connection connection = DriverManager.getConnection(_host, _user, _password);
+        Statement statement = connection.createStatement();
+        var result = statement.executeQuery("SELECT  * ");
+        connection.close();
+        return result;
         /*Mysql connnect = mysql_connect(host, user, password, name);
         String result = mysqli_query(connnect, "SELECT * ");
         mysqli_close(connect)
         return reault*/
     }
+
 }
