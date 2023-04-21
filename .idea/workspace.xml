@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a0f69b4-cfc3-48d4-b7fb-1a681d8415a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/StateBot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/PetFolder/Pet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/BotInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/TelegramBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBaseBot.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBaseBot.db" afterDir="false" />
     </list>
@@ -19,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
