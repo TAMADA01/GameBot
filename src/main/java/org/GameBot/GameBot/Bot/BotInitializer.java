@@ -20,8 +20,9 @@ public class BotInitializer {
 
     @EventListener({ContextRefreshedEvent.class})
     public void init() throws TelegramApiException, SQLException {
-        dataBase.query();
-        System.out.println(dataBase.result.getInt("userID"));
+        /*var sqlQuery = dataBase.select("*", "pets", "");
+        dataBase.query(sqlQuery);
+        System.out.println(dataBase.result.getInt("health"));*/
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         telegramBotsApi.registerBot(bot);
 
