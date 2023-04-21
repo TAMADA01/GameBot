@@ -15,14 +15,16 @@ import java.sql.SQLException;
 public class BotInitializer {
     @Autowired
     TelegramBot bot;
+    @Autowired
+    DataBase dataBase;
 
     @EventListener({ContextRefreshedEvent.class})
     public void init() throws TelegramApiException, SQLException {
-        DataBase dataBase = new DataBase();
-        System.out.println(dataBase.query().getInt("userID"));
+        /*var sqlQuery = dataBase.select("*", "pets", "");
+        dataBase.query(sqlQuery);
+        System.out.println(dataBase.result.getInt("health"));*/
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         telegramBotsApi.registerBot(bot);
-        //System.out.println("GO");
 
     }
 }
