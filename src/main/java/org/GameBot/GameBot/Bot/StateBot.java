@@ -4,10 +4,22 @@ public enum StateBot {
     None{
         @Override
         public StateBot nextState(){
-            return CreatePet;
+            return this;
         }
     },
     CreatePet{
+        @Override
+        public StateBot nextState(){
+            return this;
+        }
+    },
+    WriteDiscription{
+        @Override
+        public StateBot nextState(){
+            return WriteReward;
+        }
+    },
+    WriteReward{
         @Override
         public StateBot nextState(){
             return this;
