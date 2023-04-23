@@ -274,6 +274,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 .text("Вы покормили своего питомца")
                 .build());
     }
+    
     @SneakyThrows
     private void goToGym(Message message) {
         executeAsync(SendMessage.builder()
@@ -281,6 +282,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 .text("Питомец тренируется")
                 .build());
     }
+
     @SneakyThrows
     private void showInventory(Message message) {
         executeAsync(SendMessage.builder()
@@ -288,6 +290,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 .text("Инвентарь")
                 .build());
     }
+
     @SneakyThrows
     private void sleepCommand(Message message) {
         executeAsync(SendMessage.builder()
