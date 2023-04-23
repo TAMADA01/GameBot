@@ -24,6 +24,18 @@ public enum StateBot {
         public StateBot nextState(){
             return this;
         }
+    },
+    FinishMission{
+        @Override
+        public StateBot nextState(){
+            return this;
+        }
+    },
+    RewardUser{
+        @Override
+        public StateBot nextState(){
+            return this;
+        }
     };
 
     public abstract StateBot nextState();

@@ -19,9 +19,8 @@ public class BotInitializer {
     DataBase dataBase;
 
     @EventListener({ContextRefreshedEvent.class})
-    public void init() throws TelegramApiException, SQLException {
+    public void init() throws TelegramApiException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         telegramBotsApi.registerBot(bot);
-
     }
 }
