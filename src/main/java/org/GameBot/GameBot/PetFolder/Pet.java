@@ -10,6 +10,7 @@ public class Pet {
     public String chatID;
     public String name;
     public int health;
+    public int cheerfulness;
     public int hunger;
     public int power;
     public int money;
@@ -25,6 +26,7 @@ public class Pet {
         chatID = result.getString("chatID");
         name = result.getString("name");
         health = result.getInt("health");
+        cheerfulness = result.getInt("cheerfulness");
         hunger = result.getInt("hunger");
         power = result.getInt("power");
         money = result.getInt("money");

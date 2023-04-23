@@ -97,7 +97,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             } else if (callback.startsWith("m_id") && state == StateBot.FinishMission) {
                 finishMissionCallback(update);
                 state = StateBot.None;
-            } else if (callback.startsWith("u_id")) {
+            } else if (callback.startsWith("u_")) {
                 getReward(update);
             } else {
                 System.out.println("Unexpected callback: " + callback);
@@ -125,14 +125,13 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @SneakyThrows
     private void getReward(Update update) {
-        var userID = update.getCallbackQuery().getData().replace("u_id", "");
+        var userID = update.getCallbackQuery().getData().replace("u_", "");
         var chatID = update.getCallbackQuery().getMessage().getChatId().toString();
         var reward = dataBase.getReward(storage.get("m_id"));
         storage.clear();
         int money = dataBase.getMoney(userID, chatID);
         money += reward;
         dataBase.setReward(userID, chatID, String.valueOf(money));
-
         executeAsync(SendMessage.builder()
                 .chatId(chatID)
                 .text("Награда начислена")
@@ -223,6 +222,42 @@ public class TelegramBot extends TelegramLongPollingBot {
                             .text("Данная команда возможна только в групповом чате")
                             .build());
                 }
+            }else if (text.equals("Уложить питомца спать")) {
+                if (!message.getChat().isUserChat()) {
+                    sleepCommand(message);
+                } else {
+                    executeAsync(SendMessage.builder()
+                            .chatId(message.getFrom().getId())
+                            .text("Данная команда возможна только в групповом чате")
+                            .build());
+                }
+            }else if (text.equals("Отправить питомца в качалку")) {
+                if (!message.getChat().isUserChat()) {
+                    goToGym(message);
+                } else {
+                    executeAsync(SendMessage.builder()
+                            .chatId(message.getFrom().getId())
+                            .text("Данная команда возможна только в групповом чате")
+                            .build());
+                }
+            }else if (text.equals("Покормить питомца")) {
+                if (!message.getChat().isUserChat()) {
+                    feedComand(message);
+                } else {
+                    executeAsync(SendMessage.builder()
+                            .chatId(message.getFrom().getId())
+                            .text("Данная команда возможна только в групповом чате")
+                            .build());
+                }
+            }else if (text.equals("Мой Инвентарь")) {
+                if (!message.getChat().isUserChat()) {
+                    showInventory(message);
+                } else {
+                    executeAsync(SendMessage.builder()
+                            .chatId(message.getFrom().getId())
+                            .text("Данная команда возможна только в групповом чате")
+                            .build());
+                }
             }else if (text.equals("Отмена")) {
                 cancelCommand();
             }else {
@@ -230,6 +265,35 @@ public class TelegramBot extends TelegramLongPollingBot {
             }
 
         }
+    }
+
+    @SneakyThrows
+    private void feedComand(Message message) {
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text("Вы покормили своего питомца")
+                .build());
+    }
+    @SneakyThrows
+    private void goToGym(Message message) {
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text("Питомец тренируется")
+                .build());
+    }
+    @SneakyThrows
+    private void showInventory(Message message) {
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text("Инвентарь")
+                .build());
+    }
+    @SneakyThrows
+    private void sleepCommand(Message message) {
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text("Ваш питомец спит")
+                .build());
     }
 
     private void cancelCommand() {
@@ -263,7 +327,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                 List<InlineKeyboardButton> rowButton = Collections.singletonList(
                         InlineKeyboardButton.builder()
                                 .text(text)
-                                .callbackData(String.format("u_id%s", result.getInt("userID"))).build()
+                                .callbackData(String.format("u_%s", result.getInt("userID")))
+                                .build()
                 );
                 rowsButton.add(rowButton);
             }
@@ -378,11 +443,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (havePet){
             //Добавление Inline клавиатур
             List<InlineKeyboardButton> rowButton1 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить спать").build(),
-                    InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить").build()
+                    InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить питомца спать").build(),
+                    InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить питомца").build()
             );
             List<InlineKeyboardButton> rowButton2 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить в качалку").build(),
+                    InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
                     InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
             );
 
@@ -422,11 +487,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (havePet){
             //Добавление Inline клавиатур
             List<InlineKeyboardButton> rowButton1 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить спать").build(),
-                    InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить").build()
+                    InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить питомца спать").build(),
+                    InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить питомца").build()
             );
             List<InlineKeyboardButton> rowButton2 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить в качалку").build(),
+                    InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
                     InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
             );
 
@@ -440,11 +505,12 @@ public class TelegramBot extends TelegramLongPollingBot {
                     .chatId(message.getChatId())
                     .text(String.format("""
                                     Имя питомца: %s
-                                    Здоровье: %s❤
-                                    Голод: %s\uD83C\uDF57
-                                    Сила: %s\uD83D\uDCAA
-                                    Монет: %s\uD83D\uDCB0"""
-                            , pet.name, pet.health, pet.hunger, pet.power, pet.money))
+                                    ❤Здоровье: %s❤
+                                    ⚡️Бодрость: %s⚡️
+                                    \uD83C\uDF57Голод: %s\uD83C\uDF57
+                                    \uD83D\uDCAAСила: %s\uD83D\uDCAA
+                                    \uD83D\uDCB0Монет: %s\uD83D\uDCB0"""
+                            , pet.name, pet.health, pet.cheerfulness, pet.hunger, pet.power, pet.money))
                     .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
                     .build());
         }
