@@ -121,8 +121,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         storage.put("m_id", id);
         userSelection(update.getCallbackQuery().getMessage());
     }
-
-
+    
     @SneakyThrows
     private void getReward(Update update) {
         var userID = update.getCallbackQuery().getData().replace("u_", "");
@@ -274,7 +273,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 .text("Вы покормили своего питомца")
                 .build());
     }
-    
+
     @SneakyThrows
     private void goToGym(Message message) {
         executeAsync(SendMessage.builder()
