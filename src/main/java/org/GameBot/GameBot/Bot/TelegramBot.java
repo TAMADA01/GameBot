@@ -15,6 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
@@ -162,7 +163,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     rewardUser(message);
                     return;
                 } else if (state == StateBot.WriteDiscription) {
-                    writeDiscriptionMission(message);
+                    writeDescriptionMission(message);
                     return;
                 } else if (state == StateBot.WriteReward) {
                     writeRewardMission(message);
@@ -176,89 +177,26 @@ public class TelegramBot extends TelegramLongPollingBot {
             //Список команд
             if ((text.startsWith("/start") || text.startsWith("/help"))) {
                 helpCommand(message);
-            }else if (text.startsWith("/my_pet")) {
-                if (!message.getChat().isUserChat()) {
-                    myPetCommand(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            } else if (text.startsWith("/pet_info")) {
-                if (!message.getChat().isUserChat()) {
-                    petInfoCommand(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            } else if (text.equals("Получить питомца")) {
-                if (!message.getChat().isUserChat()) {
-                    createPet(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            } else if (text.startsWith("Дать питомцу имя ")) {
-                if (!message.getChat().isUserChat()) {
-                    renamePet(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            } else if (text.equals("Список миссий")) {
-                if (!message.getChat().isUserChat()) {
-                    getMissionList(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            }else if (text.equals("Уложить питомца спать")) {
-                if (!message.getChat().isUserChat()) {
-                    sleepCommand(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            }else if (text.equals("Отправить питомца в качалку")) {
-                if (!message.getChat().isUserChat()) {
-                    goToGym(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            }else if (text.equals("Покормить питомца")) {
-                if (!message.getChat().isUserChat()) {
-                    feedComand(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
-            }else if (text.equals("Мой Инвентарь")) {
-                if (!message.getChat().isUserChat()) {
-                    showInventory(message);
-                } else {
-                    executeAsync(SendMessage.builder()
-                            .chatId(message.getFrom().getId())
-                            .text("Данная команда возможна только в групповом чате")
-                            .build());
-                }
             }else if (text.equals("Отмена")) {
                 cancelCommand();
+            }else if (text.startsWith("/my_pet") || text.equals("Мой питомец")) {
+                executeForGroup(message, this::myPetCommand);
+            } else if (text.startsWith("/pet_info")) {
+                executeForGroup(message, this::petInfoCommand);
+            } else if (text.equals("Получить питомца")) {
+                executeForGroup(message, this::createPetCommand);
+            } else if (text.startsWith("Дать питомцу имя ")) {
+                executeForGroup(message, this::renamePetCommand);
+            } else if (text.equals("Список миссий")) {
+                executeForGroup(message, this::getMissionListCommand);
+            }else if (text.equals("Уложить питомца спать")) {
+                executeForGroup(message, this::sleepCommand);
+            }else if (text.equals("Отправить питомца в качалку")) {
+                executeForGroup(message, this::goToGymCommand);
+            }else if (text.equals("Покормить питомца")) {
+                executeForGroup(message, this::feedCommand);
+            }else if (text.equals("Мой Инвентарь")) {
+                executeForGroup(message, this::showInventoryCommand);
             }else {
                 System.out.println("Unexpected command: " + text);
             }
@@ -267,7 +205,12 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     @SneakyThrows
-    private void feedComand(Message message) {
+    private void feedCommand(Message message) {
+        executeForUserWithPet(message, this::feedPet);
+    }
+    @SneakyThrows
+    private void feedPet(Message message) {
+        dataBase.feedPet(message.getChatId().toString(), message.getFrom().getId().toString(), 10);
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Вы покормили своего питомца")
@@ -275,7 +218,12 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     @SneakyThrows
-    private void goToGym(Message message) {
+    private void goToGymCommand(Message message) {
+        executeForUserWithPet(message, this::goToGymPet);
+    }
+    @SneakyThrows
+    private void goToGymPet(Message message) {
+        dataBase.goGymPet(message.getChatId().toString(), message.getFrom().getId().toString(), 1);
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Питомец тренируется")
@@ -283,15 +231,30 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     @SneakyThrows
-    private void showInventory(Message message) {
+    private void showInventoryCommand(Message message) {
+        executeForUserWithPet(message, this::showInventoryPet);
+    }
+    @SneakyThrows
+    private void showInventoryPet(Message message) {
+        var result = dataBase.showInventory(message.getChatId().toString(), message.getFrom().getId().toString());
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
-                .text("Инвентарь")
+                .text(String.format("""
+                                    Инвентарь питомца:
+                                    ❤Аптечки: %d❤
+                                    ⚡️Энергетик: %d⚡️
+                                    \uD83C\uDF57Уселитель силы: %d\uD83C\uDF57"""
+                        , result.getInt("firstAidKit"), result.getInt("energetics"), result.getInt("PowerBooster")))
                 .build());
     }
 
     @SneakyThrows
     private void sleepCommand(Message message) {
+        executeForUserWithPet(message, this::sleepPet);
+    }
+    @SneakyThrows
+    private  void sleepPet(Message message){
+        dataBase.sleepPet(message.getChatId().toString(), message.getFrom().getId().toString(), 10);
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Ваш питомец спит")
@@ -390,7 +353,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     @SneakyThrows
-    private void writeDiscriptionMission(Message message) {
+    private void writeDescriptionMission(Message message) {
         state = state.nextState();
         storage.put("description", message.getText());
         executeAsync(SendMessage.builder()
@@ -415,7 +378,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     @SneakyThrows
-    private void getMissionList(Message message) {
+    private void getMissionListCommand(Message message) {
         var result = dataBase.getMissionList(message.getChatId().toString());
         if (result.isBeforeFirst()) {
             StringBuilder text = new StringBuilder("Список миссий:\n");
@@ -441,42 +404,31 @@ public class TelegramBot extends TelegramLongPollingBot {
     //Показать информацию о питомце
     @SneakyThrows
     private void petInfoCommand(Message message) {
-        boolean havePet = dataBase.havePet(message.getChatId().toString(), message.getFrom().getId().toString());
-        if (havePet){
-            //Добавление Inline клавиатур
-            List<InlineKeyboardButton> rowButton1 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить питомца спать").build(),
-                    InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить питомца").build()
-            );
-            List<InlineKeyboardButton> rowButton2 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
-                    InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
-            );
+        executeForUserWithPet(message, this::petInfo);
+    }
 
-            List<List<InlineKeyboardButton>> rowsButton = List.of(
-                    rowButton1,
-                    rowButton2
-            );
+    @SneakyThrows
+    private void petInfo(Message message) {
+        //Добавление Inline клавиатур
+        List<InlineKeyboardButton> rowButton1 = Arrays.asList(
+                InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить питомца спать").build(),
+                InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить питомца").build()
+        );
+        List<InlineKeyboardButton> rowButton2 = Arrays.asList(
+                InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
+                InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
+        );
 
-            executeAsync(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text("Действия с питомцем:\nУложить спать +10 к бодрости\nПокормить -5 к голоду\nОтправить в качалку +1 к силе")
-                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
-                    .build());
-        }
-        else {
-            List<InlineKeyboardButton> rowButton = Collections.singletonList(
-                    InlineKeyboardButton.builder().text("Получит питомца").switchInlineQueryCurrentChat("Получить питомца").build()
-            );
-            List<List<InlineKeyboardButton>> rowsButton = List.of(
-                    rowButton
-            );
-            executeAsync(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text("У вас нет питомца, но вы можете его получит.")
-                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
-                    .build());
-        }
+        List<List<InlineKeyboardButton>> rowsButton = List.of(
+                rowButton1,
+                rowButton2
+        );
+
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text("Действия с питомцем:\nУложить спать +10 к бодрости\nПокормить -5 к голоду\nОтправить в качалку +1 к силе")
+                .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                .build());
     }
 
     //Команда /help
@@ -491,38 +443,54 @@ public class TelegramBot extends TelegramLongPollingBot {
     //Показать питомца
     @SneakyThrows
     private void myPetCommand(Message message) {
-        boolean havePet = dataBase.havePet(message.getChatId().toString(), message.getFrom().getId().toString());
-        if (havePet){
-            //Добавление Inline клавиатур
-            List<InlineKeyboardButton> rowButton1 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить питомца спать").build(),
-                    InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить питомца").build()
-            );
-            List<InlineKeyboardButton> rowButton2 = Arrays.asList(
-                    InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
-                    InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
-            );
+        executeForUserWithPet(message, this::myPet);
+    }
 
-            List<List<InlineKeyboardButton>> rowsButton = List.of(
-                    rowButton1,
-                    rowButton2
-            );
+    @SneakyThrows
+    private void myPet(Message message){
+        //Добавление Inline клавиатур
+        List<InlineKeyboardButton> rowButton1 = Arrays.asList(
+                InlineKeyboardButton.builder().text("Уложить спать").switchInlineQueryCurrentChat("Уложить питомца спать").build(),
+                InlineKeyboardButton.builder().text("Покормить").switchInlineQueryCurrentChat("Покормить питомца").build()
+        );
+        List<InlineKeyboardButton> rowButton2 = Arrays.asList(
+                InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
+                InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
+        );
 
-            Pet pet = dataBase.getPet(message.getChatId().toString(), message.getFrom().getId().toString());
-            executeAsync(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text(String.format("""
+        List<List<InlineKeyboardButton>> rowsButton = List.of(
+                rowButton1,
+                rowButton2
+        );
+
+        Pet pet = dataBase.getPet(message.getChatId().toString(), message.getFrom().getId().toString());
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text(String.format("""
                                     Имя питомца: %s
                                     ❤Здоровье: %s❤
                                     ⚡️Бодрость: %s⚡️
                                     \uD83C\uDF57Голод: %s\uD83C\uDF57
                                     \uD83D\uDCAAСила: %s\uD83D\uDCAA
                                     \uD83D\uDCB0Монет: %s\uD83D\uDCB0"""
-                            , pet.name, pet.health, pet.cheerfulness, pet.hunger, pet.power, pet.money))
-                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                        , pet.name, pet.health, pet.cheerfulness, pet.hunger, pet.power, pet.money))
+                .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                .build());
+    }
+
+    @SneakyThrows
+    private void renamePetCommand(Message message) {
+        boolean havePet = dataBase.havePet(message.getChatId().toString(), message.getFrom().getId().toString());
+        if (havePet) {
+            var name = message.getText().replace("Дать питомцу имя ", "");
+            dataBase.renamePet(message.getFrom().getId().toString(), message.getChatId().toString(), name);
+
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text(String.format("Вы переименовали вашего питомца. Теперь его зовут: %s", name))
                     .build());
         }
-        else {
+        else{
             List<InlineKeyboardButton> rowButton = Collections.singletonList(
                     InlineKeyboardButton.builder().text("Получит питомца").switchInlineQueryCurrentChat("Получить питомца").build()
             );
@@ -538,28 +506,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     @SneakyThrows
-    private void renamePet(Message message) {
-        boolean havePet = dataBase.havePet(message.getChatId().toString(), message.getFrom().getId().toString());
-        if (havePet) {
-            var name = message.getText().replace("Дать питомцу имя ", "");
-            dataBase.renamePet(message.getFrom().getId().toString(), message.getChatId().toString(), name);
-
-            executeAsync(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text(String.format("Вы переименовали вашего питомца. Теперь его зовут: %s", name))
-                    .build());
-        }
-        else{
-            executeAsync(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text("У вас нет питомца, но вы можете его получит.\nНапишите команду: `Получить питомца`")
-                    .parseMode("Markdown")
-                    .build());
-        }
-    }
-
-    @SneakyThrows
-    private void createPet(Message message) {
+    private void createPetCommand(Message message) {
         boolean havePet = dataBase.havePet(message.getChatId().toString(), message.getFrom().getId().toString());
         if (havePet){
             executeAsync(SendMessage.builder()
@@ -575,6 +522,39 @@ public class TelegramBot extends TelegramLongPollingBot {
                     .text("У вас появился питомец\uD83D\uDE0D")
                     .build());
             myPetCommand(message);
+        }
+    }
+
+    @SneakyThrows
+    public void executeForGroup(Message message, Consumer<Message> command){
+        if (!message.getChat().isUserChat()) {
+            command.accept(message);
+        } else {
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getFrom().getId())
+                    .text("Данная команда возможна только в групповом чате")
+                    .build());
+        }
+    }
+
+    @SneakyThrows
+    private  void executeForUserWithPet(Message message, Consumer<Message> command){
+        boolean havePet = dataBase.havePet(message.getChatId().toString(), message.getFrom().getId().toString());
+        if (havePet){
+            command.accept(message);
+        }
+        else {
+            List<InlineKeyboardButton> rowButton = Collections.singletonList(
+                    InlineKeyboardButton.builder().text("Получит питомца").switchInlineQueryCurrentChat("Получить питомца").build()
+            );
+            List<List<InlineKeyboardButton>> rowsButton = List.of(
+                    rowButton
+            );
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("У вас нет питомца, но вы можете его получит.")
+                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                    .build());
         }
     }
 }

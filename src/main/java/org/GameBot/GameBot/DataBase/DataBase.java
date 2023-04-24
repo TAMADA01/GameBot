@@ -3,20 +3,19 @@ package org.GameBot.GameBot.DataBase;
 import lombok.SneakyThrows;
 import org.GameBot.GameBot.Bot.BotConfig;
 import org.GameBot.GameBot.PetFolder.Pet;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.GameBot.GameBot.PetFolder.StatusPet;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.User;
 
 import java.sql.*;
-import java.util.List;
 
 @Component
 public class DataBase {
 
-    private String _host;
-    private String _password;
-    private String _name;
-    private String _user;
+    private final String _host;
+    private final String _password;
+    private final String _name;
+    private final String _user;
     BotConfig botConfig;
     Connection connection;
 
@@ -185,9 +184,44 @@ public class DataBase {
     }
 
     @SneakyThrows
-    public boolean isAdministrator(String chatID, String userId){
-        var sqlQuery = select("administrators", "*", String.format("chatID = '%s' AND userID = '%s'", chatID, userId));
+    public boolean isAdministrator(String chatID, String userID){
+        var sqlQuery = select("administrators", "*", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         var result = query(sqlQuery);
         return result.next();
+    }
+
+    public void feedPet(String chatID, String userID, int points){
+        Pet pet = getPet(chatID, userID);
+        var sqlQuery = update("pets", "hunger", String.valueOf(pet.hunger+points), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "status", String.valueOf(StatusPet.Eat), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "time", String.valueOf(System.currentTimeMillis()/1000L), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+    }
+
+    public void sleepPet(String chatID, String userID, int points){
+        Pet pet = getPet(chatID, userID);
+        var sqlQuery = update("pets", "cheerfulness", String.valueOf(pet.cheerfulness+points), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "status", String.valueOf(StatusPet.Sleep), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "time", String.valueOf(System.currentTimeMillis()/1000L), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+    }
+
+    public void goGymPet(String chatID, String userID, int points){
+        Pet pet = getPet(chatID, userID);
+        var sqlQuery = update("pets", "power", String.valueOf(pet.power+points), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "status", String.valueOf(StatusPet.ToGym), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "time", String.valueOf(System.currentTimeMillis()/1000L), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+    }
+
+    public ResultSet showInventory(String chatID, String userID){
+        var sqlQuery = select("inventory", "*", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        return query(sqlQuery);
     }
 }
