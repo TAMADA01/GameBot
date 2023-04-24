@@ -121,7 +121,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         storage.put("m_id", id);
         userSelection(update.getCallbackQuery().getMessage());
     }
-    
+
     @SneakyThrows
     private void getReward(Update update) {
         var userID = update.getCallbackQuery().getData().replace("u_", "");
@@ -465,10 +465,16 @@ public class TelegramBot extends TelegramLongPollingBot {
                     .build());
         }
         else {
+            List<InlineKeyboardButton> rowButton = Collections.singletonList(
+                    InlineKeyboardButton.builder().text("Получит питомца").switchInlineQueryCurrentChat("Получить питомца").build()
+            );
+            List<List<InlineKeyboardButton>> rowsButton = List.of(
+                    rowButton
+            );
             executeAsync(SendMessage.builder()
                     .chatId(message.getChatId())
-                    .text("У вас нет питомца, но вы можете его получит.\nНапишите команду: `Получить питомца`")
-                    .parseMode("Markdown")
+                    .text("У вас нет питомца, но вы можете его получит.")
+                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
                     .build());
         }
     }
@@ -517,10 +523,16 @@ public class TelegramBot extends TelegramLongPollingBot {
                     .build());
         }
         else {
+            List<InlineKeyboardButton> rowButton = Collections.singletonList(
+                    InlineKeyboardButton.builder().text("Получит питомца").switchInlineQueryCurrentChat("Получить питомца").build()
+            );
+            List<List<InlineKeyboardButton>> rowsButton = List.of(
+                    rowButton
+            );
             executeAsync(SendMessage.builder()
                     .chatId(message.getChatId())
-                    .text("У вас нет питомца, но вы можете его получит.\nНапишите команду: `Получить питомца`")
-                    .parseMode("Markdown")
+                    .text("У вас нет питомца, но вы можете его получит.")
+                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
                     .build());
         }
     }

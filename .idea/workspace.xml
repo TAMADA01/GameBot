@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a0f69b4-cfc3-48d4-b7fb-1a681d8415a8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBaseBot.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBaseBot.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +121,9 @@
       <workItem from="1682073145442" duration="2847000" />
       <workItem from="1682169338732" duration="19465000" />
       <workItem from="1682235895512" duration="9622000" />
-      <workItem from="1682261235020" duration="12557000" />
+      <workItem from="1682261235020" duration="13013000" />
+      <workItem from="1682317989230" duration="1493000" />
+      <workItem from="1682323469060" duration="787000" />
     </task>
     <servers />
   </component>
