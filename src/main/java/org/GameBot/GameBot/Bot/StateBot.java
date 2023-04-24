@@ -7,12 +7,6 @@ public enum StateBot {
             return this;
         }
     },
-    CreatePet{
-        @Override
-        public StateBot nextState(){
-            return this;
-        }
-    },
     WriteDiscription{
         @Override
         public StateBot nextState(){

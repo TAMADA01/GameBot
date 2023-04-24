@@ -107,6 +107,11 @@ public class DataBase {
         update(sqlQuery);
     }
 
+    public void deletePet(String userID, String chatID) {
+        var sqlQuery = delete("pets", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+    }
+
     public void renamePet(String userID, String chatID, String name) {
         var sqlQuery = update("pets", "name", name, String.format("userID = '%s' AND chatID = '%s'", userID, chatID));
         update(sqlQuery);
@@ -147,12 +152,11 @@ public class DataBase {
         update(sqlQuery);
     }
 
-    @SneakyThrows
-    public String getUserID(String username) {
-        var sqlQuery = select("users", "userID", String.format("username = '%s'", username));
-        var result = query(sqlQuery);
-        return String.valueOf(result.getInt("userID"));
+    public void deleteUser(String chatID, String userID) {
+        var sqlQuery = delete("users", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
     }
+
     public ResultSet getUserList(String chatID) {
         var sqlQuery = select("users", "*", String.format("chatID = '%s'", chatID));
         return query(sqlQuery);
@@ -192,7 +196,8 @@ public class DataBase {
 
     public void feedPet(String chatID, String userID, int points){
         Pet pet = getPet(chatID, userID);
-        var sqlQuery = update("pets", "hunger", String.valueOf(pet.hunger+points), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        pet.setHunger(pet.getHunger()+points);
+        var sqlQuery = update("pets", "hunger", String.valueOf(pet.getHunger()), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
         sqlQuery = update("pets", "status", String.valueOf(StatusPet.Eat), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
@@ -202,7 +207,8 @@ public class DataBase {
 
     public void sleepPet(String chatID, String userID, int points){
         Pet pet = getPet(chatID, userID);
-        var sqlQuery = update("pets", "cheerfulness", String.valueOf(pet.cheerfulness+points), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        pet.setCheerfulness(pet.getCheerfulness()+points);
+        var sqlQuery = update("pets", "cheerfulness", String.valueOf(pet.getCheerfulness()), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
         sqlQuery = update("pets", "status", String.valueOf(StatusPet.Sleep), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
@@ -212,12 +218,25 @@ public class DataBase {
 
     public void goGymPet(String chatID, String userID, int points){
         Pet pet = getPet(chatID, userID);
-        var sqlQuery = update("pets", "power", String.valueOf(pet.power+points), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        pet.setPower(pet.getPower()+points);
+        var sqlQuery = update("pets", "power", String.valueOf(pet.getPower()), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
         sqlQuery = update("pets", "status", String.valueOf(StatusPet.ToGym), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
         sqlQuery = update("pets", "time", String.valueOf(System.currentTimeMillis()/1000L), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
+    }
+
+    public void updateStatus(String chatID, String userID, StatusPet status){
+        var sqlQuery = update("pets", "status", String.valueOf(status), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        update(sqlQuery);
+    }
+
+    @SneakyThrows
+    public String getPetStatus(String chatID, String userID){
+        var sqlQuery = select("pets", "status", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+        var result = query(sqlQuery);
+        return result.getString("status");
     }
 
     public ResultSet showInventory(String chatID, String userID){

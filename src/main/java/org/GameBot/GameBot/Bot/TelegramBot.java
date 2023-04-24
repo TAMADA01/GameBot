@@ -3,6 +3,7 @@ package org.GameBot.GameBot.Bot;
 import lombok.SneakyThrows;
 import org.GameBot.GameBot.DataBase.DataBase;
 import org.GameBot.GameBot.PetFolder.Pet;
+import org.GameBot.GameBot.PetFolder.StatusPet;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
@@ -185,7 +186,9 @@ public class TelegramBot extends TelegramLongPollingBot {
                 executeForGroup(message, this::petInfoCommand);
             } else if (text.equals("Получить питомца")) {
                 executeForGroup(message, this::createPetCommand);
-            } else if (text.startsWith("Дать питомцу имя ")) {
+            } else if (text.equals("Выкинуть питомца")) {
+                executeForGroup(message, this::deletePetCommand);
+            }else if (text.startsWith("Дать питомцу имя ")) {
                 executeForGroup(message, this::renamePetCommand);
             } else if (text.equals("Список миссий")) {
                 executeForGroup(message, this::getMissionListCommand);
@@ -206,11 +209,15 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @SneakyThrows
     private void feedCommand(Message message) {
-        executeForUserWithPet(message, this::feedPet);
+        executeForUserWithPet(message, this::isFreePetFeed);
+    }
+    @SneakyThrows
+    private void isFreePetFeed(Message message) {
+        executeForFreePet(message, this::feedPet);
     }
     @SneakyThrows
     private void feedPet(Message message) {
-        dataBase.feedPet(message.getChatId().toString(), message.getFrom().getId().toString(), 10);
+        dataBase.feedPet(message.getChatId().toString(), message.getFrom().getId().toString(), -20);
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Вы покормили своего питомца")
@@ -219,7 +226,11 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @SneakyThrows
     private void goToGymCommand(Message message) {
-        executeForUserWithPet(message, this::goToGymPet);
+        executeForUserWithPet(message, this::isFreePetGoToGym);
+    }
+    @SneakyThrows
+    private void isFreePetGoToGym(Message message) {
+        executeForFreePet(message, this::goToGymPet);
     }
     @SneakyThrows
     private void goToGymPet(Message message) {
@@ -250,11 +261,15 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @SneakyThrows
     private void sleepCommand(Message message) {
-        executeForUserWithPet(message, this::sleepPet);
+        executeForUserWithPet(message, this::isFreeSleepPet);
+    }
+    @SneakyThrows
+    private void isFreeSleepPet(Message message) {
+        executeForFreePet(message, this::sleepPet);
     }
     @SneakyThrows
     private  void sleepPet(Message message){
-        dataBase.sleepPet(message.getChatId().toString(), message.getFrom().getId().toString(), 10);
+        dataBase.sleepPet(message.getChatId().toString(), message.getFrom().getId().toString(), 20);
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Ваш питомец спит")
@@ -426,7 +441,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
-                .text("Действия с питомцем:\nУложить спать +10 к бодрости\nПокормить -5 к голоду\nОтправить в качалку +1 к силе")
+                .text(String.format("%s\nДействия с питомцем:\nУложить спать +10 к бодрости\nПокормить -5 к голоду\nОтправить в качалку +1 к силе", getStatusPet(message)))
                 .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
                 .build());
     }
@@ -472,37 +487,27 @@ public class TelegramBot extends TelegramLongPollingBot {
                                     ⚡️Бодрость: %s⚡️
                                     \uD83C\uDF57Голод: %s\uD83C\uDF57
                                     \uD83D\uDCAAСила: %s\uD83D\uDCAA
-                                    \uD83D\uDCB0Монет: %s\uD83D\uDCB0"""
-                        , pet.name, pet.health, pet.cheerfulness, pet.hunger, pet.power, pet.money))
+                                    \uD83D\uDCB0Монет: %s\uD83D\uDCB0
+                                    %s"""
+                        , pet.name, pet.getHealth(), pet.getCheerfulness(), pet.getHunger(), pet.getPower(), pet.getMoney(), getStatusPet(message)))
                 .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
                 .build());
     }
 
     @SneakyThrows
     private void renamePetCommand(Message message) {
-        boolean havePet = dataBase.havePet(message.getChatId().toString(), message.getFrom().getId().toString());
-        if (havePet) {
-            var name = message.getText().replace("Дать питомцу имя ", "");
-            dataBase.renamePet(message.getFrom().getId().toString(), message.getChatId().toString(), name);
+        executeForUserWithPet(message, this::renamePet);
+    }
+    @SneakyThrows
+    private void renamePet(Message message) {
+        var name = message.getText().replace("Дать питомцу имя ", "");
+        dataBase.renamePet(message.getFrom().getId().toString(), message.getChatId().toString(), name);
 
-            executeAsync(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text(String.format("Вы переименовали вашего питомца. Теперь его зовут: %s", name))
-                    .build());
-        }
-        else{
-            List<InlineKeyboardButton> rowButton = Collections.singletonList(
-                    InlineKeyboardButton.builder().text("Получит питомца").switchInlineQueryCurrentChat("Получить питомца").build()
-            );
-            List<List<InlineKeyboardButton>> rowsButton = List.of(
-                    rowButton
-            );
-            executeAsync(SendMessage.builder()
-                    .chatId(message.getChatId())
-                    .text("У вас нет питомца, но вы можете его получит.")
-                    .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
-                    .build());
-        }
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text(String.format("Вы переименовали вашего питомца. Теперь его зовут: %s", name))
+                .build());
+
     }
 
     @SneakyThrows
@@ -523,6 +528,43 @@ public class TelegramBot extends TelegramLongPollingBot {
                     .build());
             myPetCommand(message);
         }
+    }
+
+    @SneakyThrows
+    private void deletePetCommand(Message message) {
+        executeForUserWithPet(message, this::deletePet);
+    }
+
+    @SneakyThrows
+    private void deletePet(Message message) {
+        dataBase.deletePet(message.getChatId().toString(), message.getFrom().getId().toString());
+        dataBase.deleteUser(message.getChatId().toString(), message.getFrom().getId().toString());
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text("Вы выкинули питомца\uD83D\uDE2D")
+                .build());
+    }
+
+    private String getStatusPet(Message message){
+        Pet pet = dataBase.getPet(message.getChatId().toString(), message.getFrom().getId().toString());
+        var time = Pet.WORKING_TIME - (System.currentTimeMillis()/1000L - pet.time)/60;
+        var hours = time / 60 % 24;
+        var minutes = time % 60;
+        if (time <= 0){
+            pet.status = StatusPet.None.name();
+            dataBase.updateStatus(message.getChatId().toString(), message.getFrom().getId().toString(), StatusPet.None);
+        }
+        String text;
+        if (pet.status.equals(StatusPet.Eat.name())){
+            text = String.format("Ваш питомец ест. Он будет занят в течении %d часов %d минут", hours, minutes);
+        }else if (pet.status.equals(StatusPet.Sleep.name())){
+            text = String.format("Ваш питомец спит. Он будет занят в течении %d часов %d минут", hours, minutes);
+        }else if (pet.status.equals(StatusPet.ToGym.name())){
+            text = String.format("Ваш питомец тренируется. Он будет занят в течении %d часов %d минут", hours, minutes);
+        }else {
+            text = "Ваш питомец свободен";
+        }
+        return text;
     }
 
     @SneakyThrows
@@ -554,6 +596,25 @@ public class TelegramBot extends TelegramLongPollingBot {
                     .chatId(message.getChatId())
                     .text("У вас нет питомца, но вы можете его получит.")
                     .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                    .build());
+        }
+    }
+
+    @SneakyThrows
+    private  void executeForFreePet(Message message, Consumer<Message> command){
+        Pet pet = dataBase.getPet(message.getChatId().toString(), message.getFrom().getId().toString());
+        var time = Pet.WORKING_TIME - (System.currentTimeMillis()/1000L - pet.time)/60;
+        if (time <= 0){
+            pet.status = StatusPet.None.name();
+            dataBase.updateStatus(message.getChatId().toString(), message.getFrom().getId().toString(), StatusPet.None);
+        }
+        if (pet.status.equals(StatusPet.None.name())){
+            command.accept(message);
+        }
+        else {
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("Ваш питомец занят. Попробуйте в другой раз")
                     .build());
         }
     }
