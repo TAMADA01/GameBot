@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class DataBase {
@@ -97,9 +99,22 @@ public class DataBase {
         }
     }
 
+    @SneakyThrows
     public Pet getPet(String chatID, String userID) {
         var sqlQuery = select("pets", "*", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         return new Pet(query(sqlQuery));
+    }
+
+    @SneakyThrows
+    public List<Pet> getPets() {
+        var sqlQuery = select("pets", "*");
+        var result = query(sqlQuery);
+        List<Pet> pets = new ArrayList<>();
+        while (result.next()){
+
+            pets.add(new Pet(result));
+        }
+        return pets;
     }
 
     public void createPet(String userID, String chatID, String name) {
@@ -232,11 +247,11 @@ public class DataBase {
         update(sqlQuery);
     }
 
-    @SneakyThrows
-    public String getPetStatus(String chatID, String userID){
-        var sqlQuery = select("pets", "status", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
-        var result = query(sqlQuery);
-        return result.getString("status");
+    public  void updatePetCharacteristics(Pet pet){
+        var sqlQuery = update("pets", "hunger", String.valueOf(pet.getHunger()), String.format("chatID = '%s' AND userID = '%s'", pet.chatID, pet.userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "cheerfulness", String.valueOf(pet.getCheerfulness()), String.format("chatID = '%s' AND userID = '%s'", pet.chatID, pet.userID));
+        update(sqlQuery);
     }
 
     public ResultSet showInventory(String chatID, String userID){

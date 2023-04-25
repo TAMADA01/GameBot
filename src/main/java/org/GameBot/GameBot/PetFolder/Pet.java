@@ -25,8 +25,8 @@ public class Pet {
 
     @SneakyThrows
     public Pet(ResultSet result) {
-        userID = String.valueOf(result.getInt("userID"));
-        chatID = String.valueOf(result.getInt("chatID"));
+        userID = result.getString("userID");
+        chatID = result.getString("chatID");
         name = result.getString("name");
         status = result.getString("status");
         time = result.getInt("time");

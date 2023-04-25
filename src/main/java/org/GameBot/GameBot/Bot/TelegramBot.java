@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 @Component
-public class TelegramBot extends TelegramLongPollingBot {
+public class TelegramBot extends TelegramLongPollingBot implements Runnable {
     BotConfig config;
     DataBase dataBase;
     StateBot state;
@@ -41,6 +41,16 @@ public class TelegramBot extends TelegramLongPollingBot {
     @Override
     public String getBotToken() {
         return config.getToken();
+    }
+
+    @Override
+    public void run(){
+        List<Pet> pets = dataBase.getPets();
+        for (var pet : pets) {
+            pet.setHunger(pet.getHunger() + 1);
+            pet.setCheerfulness(pet.getCheerfulness() - 1);
+            dataBase.updatePetCharacteristics(pet);
+        }
     }
 
     @SneakyThrows
@@ -217,7 +227,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
     @SneakyThrows
     private void feedPet(Message message) {
-        dataBase.feedPet(message.getChatId().toString(), message.getFrom().getId().toString(), -20);
+        dataBase.feedPet(message.getChatId().toString(), message.getFrom().getId().toString(), -10);
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Вы покормили своего питомца")
@@ -269,7 +279,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
     @SneakyThrows
     private  void sleepPet(Message message){
-        dataBase.sleepPet(message.getChatId().toString(), message.getFrom().getId().toString(), 20);
+        dataBase.sleepPet(message.getChatId().toString(), message.getFrom().getId().toString(), 10);
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Ваш питомец спит")
@@ -617,5 +627,9 @@ public class TelegramBot extends TelegramLongPollingBot {
                     .text("Ваш питомец занят. Попробуйте в другой раз")
                     .build());
         }
+    }
+
+    public void everyHours(){
+
     }
 }
