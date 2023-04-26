@@ -2,6 +2,7 @@ package org.GameBot.GameBot.DataBase;
 
 import lombok.SneakyThrows;
 import org.GameBot.GameBot.Bot.BotConfig;
+import org.GameBot.GameBot.PetFolder.Inventory;
 import org.GameBot.GameBot.PetFolder.Pet;
 import org.GameBot.GameBot.PetFolder.StatusPet;
 import org.springframework.stereotype.Component;
@@ -248,11 +249,17 @@ public class DataBase {
         update(sqlQuery);
         sqlQuery = update("pets", "cheerfulness", String.valueOf(pet.getCheerfulness()), String.format("chatID = '%s' AND userID = '%s'", pet.chatID, pet.userID));
         update(sqlQuery);
+        sqlQuery = update("pets", "power", String.valueOf(pet.getPower()), String.format("chatID = '%s' AND userID = '%s'", pet.chatID, pet.userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "health", String.valueOf(pet.getHealth()), String.format("chatID = '%s' AND userID = '%s'", pet.chatID, pet.userID));
+        update(sqlQuery);
+        sqlQuery = update("pets", "money", String.valueOf(pet.getMoney()), String.format("chatID = '%s' AND userID = '%s'", pet.chatID, pet.userID));
+        update(sqlQuery);
     }
 
-    public ResultSet showInventory(String chatID, String userID){
+    public Inventory showInventory(String chatID, String userID){
         var sqlQuery = select("inventory", "*", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
-        return query(sqlQuery);
+        return new Inventory(query(sqlQuery));
     }
 
     public void createInventory(String chatID, String userID) {
@@ -277,6 +284,11 @@ public class DataBase {
         sqlQuery = delete("chats", String.format("chatID = '%s'", chatID));
         update(sqlQuery);
         sqlQuery = delete("missions", String.format("chatID = '%s'", chatID));
+        update(sqlQuery);
+    }
+
+    public void addItemInInventory(String chatID, String userID, String column, int count) {
+        var sqlQuery = update("inventory", column, String.valueOf(count), String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
     }
 }

@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.GameBot.GameBot.DataBase.DataBase;
 import org.GameBot.GameBot.PetFolder.Pet;
 import org.GameBot.GameBot.PetFolder.StatusPet;
+import org.GameBot.GameBot.Shop.ShopItem;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
@@ -15,6 +16,7 @@ import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -49,6 +51,12 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
         for (var pet : pets) {
             pet.setHunger(pet.getHunger() + 1);
             pet.setCheerfulness(pet.getCheerfulness() - 1);
+            if (pet.getHunger() == 100){
+                pet.setHealth(pet.getHealth() - 1);
+            }
+            if (pet.getCheerfulness() == 0){
+                pet.setPower(pet.getPower() - 1);
+            }
             dataBase.updatePetCharacteristics(pet);
         }
     }
@@ -71,7 +79,6 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        //System.out.println(update.toString());
         //Проверка на текстовое сообщение
         if (update.hasMessage()){
             if (update.getMessage().getLeftChatMember() != null){
@@ -87,7 +94,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
                     updateAdministrators(update.getMessage());
                     System.out.println("Бот добавлен в чат " + update.getMessage().getChatId());
                 }else {
-                    System.out.println(update.getMessage().getLeftChatMember().getFirstName() + "  добавлен в чат " + update.getMessage().getChatId());
+                    System.out.println(update.getMessage().getNewChatMembers().get(0).getFirstName() + "  добавлен в чат " + update.getMessage().getChatId());
                 }
             }else{
                 handlerMessage(update.getMessage());
@@ -210,11 +217,164 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
                 executeForGroup(message, this::feedCommand);
             }else if (text.equals("Мой инвентарь")) {
                 executeForGroup(message, this::showInventoryCommand);
+            }else if (text.equals("Магазин питомцев")) {
+                executeForGroup(message, this::showShopCommand);
+            }else if (text.startsWith("Купить ")) {
+                executeForGroup(message, this::buyItemCommand);
+            }else if (text.startsWith("Продать ")) {
+                executeForGroup(message, this::sellItemCommand);
             }else {
                 System.out.println("Unexpected command: " + text);
             }
 
         }
+    }
+
+    private void buyItemCommand(Message message) {
+        executeForGroup(message, this::buyItem);
+    }
+
+    @SneakyThrows
+    private void buyItem(Message message) {
+        var itemText = message.getText().split(" ")[1];
+        var text = message.getText().replace(String.format("Купить %s ", itemText), "");
+        ShopItem item;
+        if (itemText.equals("аптечку")){
+            item = ShopItem.FirstAidKit;
+        }else if (itemText.equals("энергетик")){
+            item = ShopItem.Energetic;
+        }else if (itemText.equals("усилитель")){
+            item = ShopItem.PowerBooster;
+        }else{
+            return;
+        }
+
+        int count;
+        try{
+            count = Integer.parseInt(text);
+        }catch (NumberFormatException e){
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("Неверное количество")
+                    .build());
+            return;
+        }
+
+        Pet pet = dataBase.getPet(message.getChatId().toString(), message.getFrom().getId().toString());
+        if (count * item.getPrice() <= pet.getMoney()){
+            pet.setMoney(pet.getMoney() - count * item.getPrice());
+            dataBase.updatePetCharacteristics(pet);
+            var inventory = dataBase.showInventory(message.getChatId().toString(), message.getFrom().getId().toString());
+            int itemCount = inventory.getItem(item.getColumn());
+            itemCount += count;
+            dataBase.addItemInInventory(message.getChatId().toString(), message.getFrom().getId().toString(), item.getColumn(), itemCount);
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("Вы приобрели " + count + " штук")
+                    .build());
+        }else {
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("У вас недостаточно монет")
+                    .build());
+        }
+    }
+
+    private void sellItemCommand(Message message) {
+        executeForGroup(message, this::sellItem);
+    }
+
+    @SneakyThrows
+    private void sellItem(Message message) {
+        var itemText = message.getText().split(" ")[1];
+        var text = message.getText().replace(String.format("Продать %s ", itemText), "");
+        ShopItem item;
+        if (itemText.equals("аптечку")){
+            item = ShopItem.FirstAidKit;
+        }else if (itemText.equals("энергетик")){
+            item = ShopItem.Energetic;
+        }else if (itemText.equals("усилитель")){
+            item = ShopItem.PowerBooster;
+        }else{
+            return;
+        }
+
+        int count;
+        try{
+            count = Integer.parseInt(text);
+        }catch (NumberFormatException e){
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("Неверное количество")
+                    .build());
+            return;
+        }
+
+        Pet pet = dataBase.getPet(message.getChatId().toString(), message.getFrom().getId().toString());
+        var inventory = dataBase.showInventory(message.getChatId().toString(), message.getFrom().getId().toString());
+        int itemCount = inventory.getItem(item.getColumn());
+        if (count <= itemCount){
+            pet.setMoney(pet.getMoney() + count * item.getCost());
+            dataBase.updatePetCharacteristics(pet);
+            itemCount -= count;
+            dataBase.addItemInInventory(message.getChatId().toString(), message.getFrom().getId().toString(), item.getColumn(), itemCount);
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("Вы продали " + count + " штук")
+                    .build());
+        }else {
+            executeAsync(SendMessage.builder()
+                    .chatId(message.getChatId())
+                    .text("У вас недостаточно предметов")
+                    .build());
+        }
+    }
+
+    @SneakyThrows
+    private void showShopCommand(Message message) {
+        executeForGroup(message, this::showShop);
+    }
+    @SneakyThrows
+    private void showShop(Message message) {
+        //Добавление Inline клавиатур
+        List<InlineKeyboardButton> rowButton1 = Arrays.asList(
+                InlineKeyboardButton.builder().text("Купить аптечку").switchInlineQueryCurrentChat("Купить аптечку 1").build(),
+                InlineKeyboardButton.builder().text("Продать аптечку").switchInlineQueryCurrentChat("Продать аптечку 1").build()
+        );
+        List<InlineKeyboardButton> rowButton2 = Arrays.asList(
+                InlineKeyboardButton.builder().text("Купить энергетик").switchInlineQueryCurrentChat("Купить энергетик 1").build(),
+                InlineKeyboardButton.builder().text("Продать энергетик").switchInlineQueryCurrentChat("Продать энергетик 1").build()
+        );
+        List<InlineKeyboardButton> rowButton3 = Arrays.asList(
+                InlineKeyboardButton.builder().text("Купить усилитель").switchInlineQueryCurrentChat("Купить усилитель 1").build(),
+                InlineKeyboardButton.builder().text("Продать усилитель").switchInlineQueryCurrentChat("Продать усилитель 1").build()
+        );
+
+        List<List<InlineKeyboardButton>> rowsButton = List.of(
+                rowButton1,
+                rowButton2,
+                rowButton3
+        );
+        var pet = dataBase.getPet(message.getChatId().toString(), message.getFrom().getId().toString());
+        executeAsync(SendMessage.builder()
+                .chatId(message.getChatId())
+                .text(String.format("""
+                                💸Монет: %s💸
+                                💊Аптечка:💊
+                                Купить - %s
+                                Продать - %s
+                                ☕️Энергетик:☕️
+                                Купить - %s
+                                Продать - %s
+                                🥊Усилитель:🥊
+                                Купить - %s
+                                Продать - %s""",
+                        pet.getMoney(),
+                        ShopItem.FirstAidKit.getPrice(), ShopItem.FirstAidKit.getCost(),
+                        ShopItem.Energetic.getPrice(), ShopItem.Energetic.getCost(),
+                        ShopItem.PowerBooster.getPrice(), ShopItem.PowerBooster.getCost()))
+                .replyMarkup(InlineKeyboardMarkup.builder().keyboard(rowsButton).build())
+                .build());
     }
 
     @SneakyThrows
@@ -257,15 +417,15 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
     }
     @SneakyThrows
     private void showInventoryPet(Message message) {
-        var result = dataBase.showInventory(message.getChatId().toString(), message.getFrom().getId().toString());
+        var inventory = dataBase.showInventory(message.getChatId().toString(), message.getFrom().getId().toString());
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text(String.format("""
                                     Инвентарь питомца:
                                     ❤Аптечки: %d❤
                                     ⚡️Энергетик: %d⚡️
-                                    \uD83C\uDF57Уселитель силы: %d\uD83C\uDF57"""
-                        , result.getInt("firstAidKit"), result.getInt("energetics"), result.getInt("PowerBooster")))
+                                    \uD83C\uDF57Усилитель силы: %d\uD83C\uDF57"""
+                        , inventory.firstAidKit, inventory.energetics, inventory.powerBooster))
                 .build());
     }
 
@@ -317,7 +477,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
                 List<InlineKeyboardButton> rowButton = Collections.singletonList(
                         InlineKeyboardButton.builder()
                                 .text(text)
-                                .callbackData(String.format("u_%s", result.getInt("userID")))
+                                .callbackData(String.format("u_%s", result.getString("userID")))
                                 .build()
                 );
                 rowsButton.add(rowButton);
@@ -443,10 +603,14 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
                 InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
                 InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой инвентарь").build()
         );
+        List<InlineKeyboardButton> rowButton3 = Collections.singletonList(
+                InlineKeyboardButton.builder().text("Магазин").switchInlineQueryCurrentChat("Магазин питомцев").build()
+        );
 
         List<List<InlineKeyboardButton>> rowsButton = List.of(
                 rowButton1,
-                rowButton2
+                rowButton2,
+                rowButton3
         );
 
         executeAsync(SendMessage.builder()
@@ -607,11 +771,11 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
         }
         String text;
         if (pet.status.equals(StatusPet.Eat.name())){
-            text = String.format("Ваш питомец ест. Он будет занят в течении %d часов %d минут", hours, minutes);
+            text = String.format("Ваш питомец ест\uD83D\uDE0B\n Он будет занят в течении %d часов %d минут", hours, minutes);
         }else if (pet.status.equals(StatusPet.Sleep.name())){
-            text = String.format("Ваш питомец спит. Он будет занят в течении %d часов %d минут", hours, minutes);
+            text = String.format("Ваш питомец спит\uD83D\uDE34\n Он будет занят в течении %d часов %d минут", hours, minutes);
         }else if (pet.status.equals(StatusPet.ToGym.name())){
-            text = String.format("Ваш питомец тренируется. Он будет занят в течении %d часов %d минут", hours, minutes);
+            text = String.format("Ваш питомец тренируется\uD83D\uDCAA\n Он будет занят в течении %d часов %d минут", hours, minutes);
         }else {
             text = "Ваш питомец свободен";
         }
