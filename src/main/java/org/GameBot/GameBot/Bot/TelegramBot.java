@@ -76,7 +76,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
         if (update.hasMessage()){
             if (update.getMessage().getLeftChatMember() != null){
                 if(update.getMessage().getLeftChatMember().getUserName().equals("AXELTeam_bot")){
-                    dataBase.deleteChat(update.getMessage().getChatId().toString());
+                    dataBase.deleteAll(update.getMessage().getChatId().toString());
                     System.out.println("Бот удален из чата " + update.getMessage().getChatId());
                 }else {
                     System.out.println(update.getMessage().getLeftChatMember().getFirstName() + " удален из чата " + update.getMessage().getChatId());
@@ -84,6 +84,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
             } else if (!update.getMessage().getNewChatMembers().isEmpty()) {
                 if(update.getMessage().getNewChatMembers().get(0).getUserName().equals("AXELTeam_bot")){
                     dataBase.addChat(update.getMessage().getChatId().toString());
+                    updateAdministrators(update.getMessage());
                     System.out.println("Бот добавлен в чат " + update.getMessage().getChatId());
                 }else {
                     System.out.println(update.getMessage().getLeftChatMember().getFirstName() + "  добавлен в чат " + update.getMessage().getChatId());
@@ -95,8 +96,6 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
         //Проверка на сообщение от InlineButton
         else if (update.hasCallbackQuery()){
             handlerCallback(update);
-        } else if (update.hasMyChatMember()) {
-            System.out.println(update.getMyChatMember().getNewChatMember().toString());
         }
     }
 
@@ -140,9 +139,9 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
         var chatID = update.getCallbackQuery().getMessage().getChatId().toString();
         var reward = dataBase.getReward(storage.get("m_id"));
         storage.clear();
-        int money = dataBase.getMoney(userID, chatID);
+        int money = dataBase.getMoney(chatID, userID);
         money += reward;
-        dataBase.setReward(userID, chatID, String.valueOf(money));
+        dataBase.setReward(chatID, userID, String.valueOf(money));
         executeAsync(SendMessage.builder()
                 .chatId(chatID)
                 .text("Награда начислена")
@@ -162,6 +161,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
                     }
                 }
             }
+            message.setText(text);
 
             if (dataBase.isAdministrator(message.getChatId().toString(), message.getFrom().getId().toString())){
                 if (text.equals("Создать миссию")) {
@@ -208,7 +208,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
                 executeForGroup(message, this::goToGymCommand);
             }else if (text.equals("Покормить питомца")) {
                 executeForGroup(message, this::feedCommand);
-            }else if (text.equals("Мой Инвентарь")) {
+            }else if (text.equals("Мой инвентарь")) {
                 executeForGroup(message, this::showInventoryCommand);
             }else {
                 System.out.println("Unexpected command: " + text);
@@ -441,7 +441,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
         );
         List<InlineKeyboardButton> rowButton2 = Arrays.asList(
                 InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
-                InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
+                InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой инвентарь").build()
         );
 
         List<List<InlineKeyboardButton>> rowsButton = List.of(
@@ -519,7 +519,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
         );
         List<InlineKeyboardButton> rowButton2 = Arrays.asList(
                 InlineKeyboardButton.builder().text("Отправить в качалку").switchInlineQueryCurrentChat("Отправить питомца в качалку").build(),
-                InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой Инвентарь").build()
+                InlineKeyboardButton.builder().text("Инвентарь").switchInlineQueryCurrentChat("Мой инвентарь").build()
         );
 
         List<List<InlineKeyboardButton>> rowsButton = List.of(
@@ -550,7 +550,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
     @SneakyThrows
     private void renamePet(Message message) {
         var name = message.getText().replace("Дать питомцу имя ", "");
-        dataBase.renamePet(message.getFrom().getId().toString(), message.getChatId().toString(), name);
+        dataBase.renamePet( message.getChatId().toString(), message.getFrom().getId().toString(), name);
 
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
@@ -569,8 +569,9 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
                     .build());
         }
         else {
-            dataBase.createPet(message.getFrom().getId().toString(), message.getChatId().toString(), "Ваш питомец");
+            dataBase.createPet( message.getChatId().toString(), message.getFrom().getId().toString(), "Ваш питомец");
             dataBase.addUser(message.getChatId().toString(), message.getFrom());
+            dataBase.createInventory(message.getChatId().toString(), message.getFrom().getId().toString());
             executeAsync(SendMessage.builder()
                     .chatId(message.getChatId())
                     .text("У вас появился питомец\uD83D\uDE0D")
@@ -588,6 +589,7 @@ public class TelegramBot extends TelegramLongPollingBot implements Runnable {
     private void deletePet(Message message) {
         dataBase.deletePet(message.getChatId().toString(), message.getFrom().getId().toString());
         dataBase.deleteUser(message.getChatId().toString(), message.getFrom().getId().toString());
+        dataBase.deleteInventory(message.getChatId().toString(), message.getFrom().getId().toString());
         executeAsync(SendMessage.builder()
                 .chatId(message.getChatId())
                 .text("Вы выкинули питомца\uD83D\uDE2D")

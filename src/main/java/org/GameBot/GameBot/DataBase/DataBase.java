@@ -77,10 +77,6 @@ public class DataBase {
         return String.format("INSERT INTO missions (id, chatID, description, reward) VALUES (NULL, '%s', '%s', '%s')", chatID, description, reward);
     }
 
-    public String insertUsers(String chatID, String userID, String firstName, String lastName, String username){
-        return String.format("INSERT INTO users (id, chatID, userID, firstName, lastName, username) VALUES (NULL, %s, '%s', '%s', '%s', '%s')", chatID, userID, firstName, lastName, username);
-    }
-
     public String update(String table, String column, String newValue, String where){
         return String.format("UPDATE %s SET %s = '%s' WHERE %s", table, column, newValue, where);
     }
@@ -117,17 +113,17 @@ public class DataBase {
         return pets;
     }
 
-    public void createPet(String userID, String chatID, String name) {
+    public void createPet(String chatID, String userID, String name) {
         var sqlQuery = insertPet(userID, chatID, name);
         update(sqlQuery);
     }
 
-    public void deletePet(String userID, String chatID) {
+    public void deletePet(String chatID, String userID) {
         var sqlQuery = delete("pets", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
     }
 
-    public void renamePet(String userID, String chatID, String name) {
+    public void renamePet(String chatID, String userID, String name) {
         var sqlQuery = update("pets", "name", name, String.format("userID = '%s' AND chatID = '%s'", userID, chatID));
         update(sqlQuery);
     }
@@ -142,7 +138,7 @@ public class DataBase {
         update(sqlQuery);
     }
 
-    public void setReward(String userID, String chatID, String money) {
+    public void setReward(String chatID, String userID, String money) {
         var sqlQuery = update("pets", "money", money, String.format("userID = '%s' AND chatID = '%s'", userID, chatID));
         update(sqlQuery);
     }
@@ -156,19 +152,19 @@ public class DataBase {
     }
 
     @SneakyThrows
-    public int getMoney(String userID, String chatID) {
+    public int getMoney(String chatID, String userID) {
         var sqlQuery = select("pets", "money", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         var result = query(sqlQuery);
         return result.getInt("money");
     }
 
-    public void addUser(String chatID, User user) {
-        var sqlQuery = insertUsers(chatID, user.getId().toString(), user.getFirstName(), user.getLastName(), user.getUserName());
+    public void deleteUser(String chatID, String userID) {
+        var sqlQuery = delete("users", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         update(sqlQuery);
     }
 
-    public void deleteUser(String chatID, String userID) {
-        var sqlQuery = delete("users", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
+    public void addUser(String chatID, User user) {
+        var sqlQuery = insert("users", "id, chatID, userID, firstName, lastName, username", String.format("NULL, '%s', '%s', '%s', '%s', '%s'", chatID, user.getId(), user.getFirstName(), user.getLastName(), user.getUserName()));
         update(sqlQuery);
     }
 
@@ -257,5 +253,30 @@ public class DataBase {
     public ResultSet showInventory(String chatID, String userID){
         var sqlQuery = select("inventory", "*", String.format("chatID = '%s' AND userID = '%s'", chatID, userID));
         return query(sqlQuery);
+    }
+
+    public void createInventory(String chatID, String userID) {
+        var sqlQuery = insert("inventory", "userID, chatID", String.format("%s, %s", userID, chatID));
+        update(sqlQuery);
+    }
+
+    public void deleteInventory(String chatID, String userID) {
+        var sqlQuery = delete("inventory", String.format("userID = '%s' AND chatID = '%s'", userID, chatID));
+        update(sqlQuery);
+    }
+
+    public void deleteAll(String chatID) {
+        var sqlQuery = delete("inventory", String.format("chatID = '%s'", chatID));
+        update(sqlQuery);
+        sqlQuery = delete("pets", String.format("chatID = '%s'", chatID));
+        update(sqlQuery);
+        sqlQuery = delete("users", String.format("chatID = '%s'", chatID));
+        update(sqlQuery);
+        sqlQuery = delete("administrators", String.format("chatID = '%s'", chatID));
+        update(sqlQuery);
+        sqlQuery = delete("chats", String.format("chatID = '%s'", chatID));
+        update(sqlQuery);
+        sqlQuery = delete("missions", String.format("chatID = '%s'", chatID));
+        update(sqlQuery);
     }
 }

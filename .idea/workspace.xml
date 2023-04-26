@@ -7,6 +7,7 @@
     <list default="true" id="6a0f69b4-cfc3-48d4-b7fb-1a681d8415a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/Bot/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBaseBot.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GameBot/GameBot/DataBase/DataBaseBot.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,6 +131,8 @@
       <workItem from="1682407471736" duration="355000" />
       <workItem from="1682421035586" duration="4338000" />
       <workItem from="1682452335992" duration="2048000" />
+      <workItem from="1682454417503" duration="1753000" />
+      <workItem from="1682505603582" duration="2042000" />
     </task>
     <servers />
   </component>
